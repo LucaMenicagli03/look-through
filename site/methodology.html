@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Look-Through — methodology</title><link rel="stylesheet" href="style.css"><script src="common.js"></script></head>
+<body><main>
+<h1>Methodology and limits</h1>
+<p class="sub"><a href="index.html">← Back to the map</a> · Snapshot <span id="snap"></span> · version <span id="ver"></span></p>
+<h2>Method</h2>
+<div class="card">
+<p><b>Map.</b> Each arrow is either a position disclosed by the issuer (transparency page or reserve attestation) or the on-chain balance at a reserve address the issuer itself names. Every arrow carries a source, a date and an amount. A node enters the map only if all three exist.</p>
+<p><b>Gross and net.</b> Gross is the category total of a public aggregator. A position is netted out only when the holder is inside the gross total and the position is held as tokens that are themselves counted in it. Where the holding form is not disclosed, net is a range. Extended perimeters add a stablecoin's supply to the gross and net out its holdings of core funds.</p>
+<p><b>Cascade.</b> A holder loses a share <i>s</i> of its supply and redeems <i>s</i> times its reserves, either pro rata or using cash and USDC first. Each fund covers requests immediately up to the liquidity available in the chosen scenario; the remainder settles on the next business day. When several requests hit the same fund, its liquidity is used once and shared pro rata. A wrapper that receives a request absorbs it with its own liquidity first, then passes the rest to the funds it holds. The holdings graph is checked for cycles before any cascade is computed.</p>
+<p><b>Reproducibility.</b> All figures are produced by one script from five source files and written to <code>data.json</code>; the pages read only that file. The script is covered by tests that compare it with an independent hand calculation and check conservation, monotonicity, coverage bounds and shared liquidity.</p>
+</div>
+<h2>Limits</h2><div class="card"><ul id="limits"></ul><p class="note" id="stale"></p></div>
+<h2>Products</h2><div class="card scroll"><table id="prod"></table></div>
+<h2>Liquidity by scenario</h2><div class="card scroll"><table id="liq"></table></div>
+<h2>Off-map reserves</h2><div class="card scroll"><table id="oth"></table></div>
+</main>
+<script>
+fetch('data.json').then(r=>r.json()).then(D=>{
+ const S=D.snapshot;document.getElementById('snap').textContent=dt(S.snapshot_date);document.getElementById('ver').textContent=S.version;
+ document.getElementById('limits').innerHTML=S.limits.map(l=>`<li>${esc(l)}</li>`).join('');
+ document.getElementById('stale').textContent=`Largest gap to the snapshot date: ${S.max_staleness_days.holdings} days for positions, ${S.max_staleness_days.liquidity} days for cash data. Holdings graph acyclic: ${D.acyclic?'yes':'no'}.`;
+ document.getElementById('prod').innerHTML='<tr><th>Product</th><th>Type</th><th>In core</th><th>Supply</th><th>As of</th><th>Status</th><th>Source</th><th class="l">Note</th></tr>'+D.products.map(p=>`<tr><td>${esc(p.id)} — ${esc(p.name)}</td><td>${esc(p.type)}</td><td>${p.in_core?'yes':'no'}</td><td>${nf(p.supply)}${p.supply_alt?' / '+nf(p.supply_alt):''}</td><td>${dt(p.as_of)}</td><td>${tag(p.status)}</td><td>${src(p.source_url,'link')}</td><td class="l">${esc(p.note)}</td></tr>`).join('');
+ document.getElementById('liq').innerHTML='<tr><th>Product</th><th>Scenario</th><th>Amount</th><th>Status</th><th>Source</th><th class="l">Note</th></tr>'+D.liquidity.map(l=>`<tr><td>${esc(l.product_id)}</td><td>${esc(l.scenario)}</td><td>${nf(l.amount)}</td><td>${tag(l.status)}</td><td>${src(l.source_url,'link')}</td><td class="l">${esc(l.note)}</td></tr>`).join('');
+ document.getElementById('oth').innerHTML='<tr><th>Holder</th><th>Reserve</th><th>Amount</th><th>As of</th><th>Status</th><th>Source</th><th class="l">Note</th></tr>'+D.other_reserves.map(o=>`<tr><td>${esc(o.holder_id)}</td><td>${esc(o.asset)}</td><td>${nf(o.amount)}</td><td>${dt(o.as_of)}</td><td>${tag(o.status)}</td><td>${src(o.source_url,'link')}</td><td class="l">${esc(o.note)}</td></tr>`).join('');
+}).catch(e=>{document.querySelector('main').insertAdjacentHTML('beforeend','<p class="warn">Could not load data.json: '+esc(e)+'</p>')});
+</script></body></html>

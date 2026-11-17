@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Look-Through — tokenized Treasury funds</title>
+<meta name="description" content="Who holds whom among tokenized US Treasury funds: holdings map, net market size and redemption cascade.">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/cytoscape@3.30.2/dist/cytoscape.min.js"></script><script src="common.js"></script></head>
+<body><main>
+<h1>Look-Through</h1>
+<p class="sub">Who holds whom among tokenized US Treasury funds: a holdings map, the market's net size, and what a redemption shock does downstream. Snapshot <span id="snap"></span>. Amounts in USD millions. <a href="methodology.html">Methodology and limits</a></p>
+<div class="kpis" id="kpis"></div>
+
+<h2>1. Holdings map</h2>
+<p class="note legend"><span><i class="dot" style="background:var(--core)"></i>fund or wrapper in the core market</span><span><i class="dot" style="background:var(--out)"></i>stablecoin (outside the market total)</span><br>Arrows run from holder to fund; thickness shows the amount held. Select a node or an arrow for source and date.</p>
+<div id="cy" role="img" aria-label="Graph of holdings between products; the same data is in the table below"></div><div id="detail" class="note"></div>
+<div class="card scroll" style="margin-top:12px"><table id="edges"></table></div>
+
+<h2>2. Gross and net size</h2>
+<p class="note">Net removes positions that one product holds in another when both legs are counted in the gross total. It is shown as a range where the issuer does not disclose the form of the position.</p>
+<div class="card scroll"><table id="net"></table></div>
+
+<h2>3. Redemption cascade</h2>
+<p class="note">A holder loses a share of its supply and redeems its reserves. For each fund: the amount requested, how much available liquidity covers immediately, and what is left to settle on the next business day (T+1). Funds redeem at NAV; prices are not modelled.</p>
+<div class="controls">
+<label>Holder under stress<select id="holder"></select></label>
+<label>Shock<select id="shock"></select></label>
+<label>Liquidity scenario<select id="scenario"><option value="low">low — funded amounts only</option><option value="base" selected>base</option><option value="high">high</option></select></label>
+<label>Redemption order<select id="variant"><option value="pro_rata">pro rata across reserves</option><option value="liquid_first">cash and USDC first</option></select></label>
+</div>
+<div class="card scroll"><table id="casc"></table><p class="note" id="cascsum" aria-live="polite"></p></div>
+<footer class="note">Public data only: positions disclosed by issuers and balances at issuer-named addresses. Independent research, not investment advice. <a href="methodology.html">Sources, method and limits</a>.</footer>
+</main>
+<script>
+fetch('data.json').then(r=>r.json()).then(D=>{
+ const P=Object.fromEntries(D.products.map(p=>[p.id,p]));
+ document.getElementById('snap').textContent=dt(D.snapshot.snapshot_date);
+ // headline figures: only clean, double-counted concentrations; mismatching sources are never headlined
+ const conc=D.concentration.filter(c=>!c.source_mismatch&&c.counted_in_gross==='yes').sort((a,b)=>b.share_of_asset_supply-a.share_of_asset_supply).slice(0,2);
+ const top=Object.entries(D.mapped_share).filter(([,v])=>v.holders>1).sort((a,b)=>b[1].mapped_holdings-a[1].mapped_holdings)[0];
+ const n=D.net.core;
+ let k=conc.map(c=>`<div class="card kpi"><b>${rng(c.share_low,c.share_high,x=>pc(x,0))}</b><span>of ${esc(c.asset)} is held by ${esc(c.holder)}</span></div>`).join('');
+ if(top)k+=`<div class="card kpi"><b>${rng(top[1].share_low,top[1].share_high,x=>pc(x,0))}</b><span>of ${esc(top[0])} is held by ${top[1].holders} mapped products</span></div>`;
+ k+=`<div class="card kpi"><b>${rng(n.double_count_low/n.gross,n.double_count_high/n.gross,pc)}</b><span>of the core market is counted twice</span></div>`;
+ document.getElementById('kpis').innerHTML=k;
+ // map: holders on the top row, funds on the bottom row, ordered to limit crossings
+ const css=getComputedStyle(document.documentElement),core=css.getPropertyValue('--core').trim(),out=css.getPropertyValue('--out').trim();
+ const holders=[...new Set(D.holdings.map(h=>h.holder_id))];
+ const hIdx=Object.fromEntries(holders.map((h,i)=>[h,i]));
+ const bary=id=>{const v=D.holdings.filter(h=>h.asset_id===id).map(h=>hIdx[h.holder_id]);return v.reduce((a,b)=>a+b,0)/v.length};
+ const funds=D.products.map(p=>p.id).filter(id=>!(id in hIdx)).sort((a,b)=>bary(a)-bary(b));
+ const pos={};holders.forEach((h,i)=>pos[h]={x:1000*(i+.5)/holders.length,y:0});funds.forEach((f,i)=>pos[f]={x:1000*(i+.5)/funds.length,y:300});
+ const maxA=Math.max(...D.holdings.map(h=>h.amount));
+ const els=D.products.map(p=>({data:{id:p.id,label:p.id+'\n'+nf(p.supply,0),size:30+Math.sqrt(p.supply)*1.5,color:p.in_core?core:out,va:(p.id in hIdx)?'top':'bottom',my:(p.id in hIdx)?-4:4},position:pos[p.id]}))
+  .concat(D.holdings.map((h,i)=>({data:{id:'e'+i,source:h.holder_id,target:h.asset_id,w:1.5+9*h.amount/maxA,label:nf(h.amount,0)}})));
+ const detail=document.getElementById('detail');
+ if(window.cytoscape){
+  const cy=cytoscape({container:document.getElementById('cy'),elements:els,userZoomingEnabled:false,userPanningEnabled:false,autoungrabify:true,
+   style:[{selector:'node',style:{'background-color':'data(color)',label:'data(label)','text-wrap':'wrap','font-size':12,color:'#16202a','text-valign':'data(va)','text-margin-y':'data(my)',width:'data(size)',height:'data(size)'}},
+    {selector:'edge',style:{width:'data(w)','line-color':'#9aa7b3','target-arrow-color':'#9aa7b3','target-arrow-shape':'triangle','curve-style':'straight',label:'data(label)','font-size':11,'text-background-color':'#fff','text-background-opacity':.92,'text-background-padding':2}},
+    {selector:':selected',style:{'border-width':3,'border-color':'#16202a','line-color':'#16202a','target-arrow-color':'#16202a'}}],
+   layout:{name:'preset',padding:36}});
+  addEventListener('resize',()=>{cy.resize();cy.fit(undefined,36)});
+  cy.on('tap','node',e=>{const p=P[e.target.id()];detail.innerHTML=`<b>${esc(p.name)}</b> (${esc(p.issuer)}) — supply ${nf(p.supply)} as of ${dt(p.as_of)} ${tag(p.status)} ${src(p.source_url)}<br>${esc(p.note)}`});
+  cy.on('tap','edge',e=>{const h=D.holdings[+e.target.id().slice(1)];detail.innerHTML=`<b>${esc(h.holder_id)} → ${esc(h.asset_id)}</b>: ${nf(h.amount)} as of ${dt(h.as_of)} ${tag(h.status)} ${src(h.source_url)}${h.balance_source_urls?' · balances: '+h.balance_source_urls.split(' ').map((u,j)=>src(u,'explorer '+(j+1))).join(' '):''}<br>${esc(h.note)}`});
+ }else document.getElementById('cy').outerHTML='<p class="note">Graph unavailable; the table below holds the same data.</p>';
+ const cg={yes:'yes',no:'no',unknown:'not disclosed'};
+ document.getElementById('edges').innerHTML='<tr><th>Holder → fund</th><th>Amount</th><th>Share of fund</th><th>As of</th><th>Counted in gross</th><th>Status</th><th>Source</th></tr>'+
+  D.holdings.map((h,i)=>{const c=D.concentration[i];return `<tr title="${esc(h.note)}"><td>${esc(h.holder_id)} → ${esc(h.asset_id)}</td><td>${nf(h.amount)}</td><td>${c.source_mismatch?'<span class="warn">sources disagree ¹</span>':rng(c.share_low,c.share_high,pc)}</td><td>${dt(h.as_of)}</td><td>${cg[h.counted_in_gross]}</td><td>${tag(h.status)}</td><td>${src(h.source_url,'link')}${h.balance_source_urls?' · balances: '+h.balance_source_urls.split(' ').map((u,j)=>src(u,String(j+1))).join(' '):''}</td></tr>`}).join('')+
+  (D.concentration.some(c=>c.source_mismatch)?`<tr><td colspan="7" class="note l">¹ The position disclosed by the holder is larger than the fund's token supply reported by the aggregator (${D.concentration.filter(c=>c.source_mismatch).map(c=>`${esc(c.asset)}: ${nf(D.holdings.find(h=>h.holder_id===c.holder&&h.asset_id===c.asset).amount)} vs ${nf(P[c.asset].supply)}`).join('; ')}). Shown as an open discrepancy; see methodology.</td></tr>`:'');
+ // net
+ const names={core:'Core market','core+USDtb':'Core + USDtb','core+USDtb+USDGO':'Core + USDtb + USDGO'};
+ document.getElementById('net').innerHTML='<tr><th>Perimeter</th><th>Gross</th><th>Net</th><th>Counted twice</th><th>Share of gross</th></tr>'+
+  Object.entries(D.net).map(([k,v])=>`<tr><td>${names[k]||esc(k)}</td><td>${nf(v.gross)}</td><td>${rng(v.net_low,v.net_high,nf)}</td><td>${rng(v.double_count_low,v.double_count_high,nf)}</td><td>${rng(v.double_count_low/v.gross,v.double_count_high/v.gross,pc)}</td></tr>`).join('')+
+  `<tr><td colspan="5" class="note l">Core gross: ${esc(D.snapshot.gross_note)} — ${src(D.snapshot.gross_source)}. Extended perimeters add each stablecoin's supply to the gross and net out its holdings of core funds.</td></tr>`;
+ // cascade
+ const H=[...new Set(D.cascades.map(c=>Object.keys(c.shocks)[0]))],S=[...new Set(D.cascades.map(c=>Object.values(c.shocks)[0]))];
+ const sel=id=>document.getElementById(id);
+ sel('holder').innerHTML=H.map(h=>`<option>${esc(h)}</option>`).join('');
+ sel('shock').innerHTML=S.map(s=>`<option value="${s}" ${s===0.3?'selected':''}>${pc(s,0)} of supply</option>`).join('');
+ function draw(){
+  const h=sel('holder').value,s=+sel('shock').value,sc=sel('scenario').value,v=sel('variant').value;
+  const c=D.cascades.find(c=>c.shocks[h]===s&&c.scenario===sc&&c.variant===v);
+  let rows=Object.entries(c.funds).map(([f,x])=>`<tr><td>${esc(f)}</td><td>${nf(x.request)}</td><td>${pc(x.request_over_aum)}</td><td>${nf(x.liquidity_used)}</td><td>${pc(x.coverage,0)}</td><td>${nf(x.residual_t1)}</td></tr>`).join('');
+  const own=Object.values(c.own_liquidity_paid).reduce((a,b)=>a+b,0);
+  rows+=`<tr><td>Holder's own cash / USDC</td><td>${nf(own)}</td><td></td><td>${nf(own)}</td><td>${own>0?pc(1,0):'n/a'}</td><td>${nf(0)}</td></tr>`;
+  if(c.outside_total>0)rows+=`<tr><td>Off-map reserves</td><td>${nf(c.outside_total)}</td><td></td><td colspan="3" class="note">not modelled</td></tr>`;
+  sel('casc').innerHTML='<tr><th>Fund</th><th>Requested</th><th>Share of fund AUM</th><th>Covered immediately</th><th>Coverage</th><th>Residual at T+1</th></tr>'+rows;
+  sel('cascsum').textContent=`Total redemption ${nf(c.total_demand)}: ${nf(c.immediate_total)} covered immediately (${pc(c.immediate_share)}), ${nf(c.t1_total)} at T+1`+(c.outside_total>0?`, ${nf(c.outside_total)} on off-map reserves`:'')+'.';
+ }
+ ['holder','shock','scenario','variant'].forEach(i=>sel(i).onchange=draw);draw();
+}).catch(e=>{document.querySelector('main').insertAdjacentHTML('beforeend','<p class="warn">Could not load data.json: '+esc(e)+'</p>')});
+</script></body></html>

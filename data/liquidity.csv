@@ -1,0 +1,25 @@
+product_id,facility,amount_usd_m,scenario,source_url,status,note
+BUIDL,securitize_ethena,25.00,low,https://www.prnewswire.com/news-releases/securitize-and-ethena-launch-100-million-liquidity-facility-for-blackrocks-buidl-302937776.html,VERIFIED,Funded USDC leg of the Securitize/Ethena facility only. The 25 held in BUIDL serves the opposite direction and cannot fund BUIDL redemptions
+BUIDL,securitize_ethena,75.00,base,https://www.prnewswire.com/news-releases/securitize-and-ethena-launch-100-million-liquidity-facility-for-blackrocks-buidl-302937776.html,ASSUMPTION,25 funded USDC plus the additional 50 stated as available within an hour (assumed to be in stablecoins)
+BUIDL,securitize_ethena,100.00,high,https://www.prnewswire.com/news-releases/securitize-and-ethena-launch-100-million-liquidity-facility-for-blackrocks-buidl-302937776.html,ASSUMPTION,Full stated maximum capacity assumed in stablecoins. Same-day fund redemption not included: terms not read from a primary source
+OUSG,ousg_usdc,3.65,low,https://ondo.finance/ousg,VERIFIED,USDC held by the fund: 3647708 USD as of 16 Nov 2026
+OUSG,ousg_usdc,3.65,base,https://ondo.finance/ousg,VERIFIED,Same as low
+OUSG,ousg_usdc,3.65,high,https://ondo.finance/ousg,VERIFIED,Same as low
+SWEEP,sweep_pyusd,0.00,low,https://am.galaxy.com/galaxy-state-street-sweep-fund/,VERIFIED,The fund offers 24/7 PYUSD redemptions subject to portfolio availability; no amount is disclosed
+SWEEP,sweep_pyusd,28.43,base,https://am.galaxy.com/galaxy-state-street-sweep-fund/,ASSUMPTION,Parametric: 10% of AUM
+SWEEP,sweep_pyusd,71.08,high,https://am.galaxy.com/galaxy-state-street-sweep-fund/,ASSUMPTION,Parametric: 25% of AUM
+BENJI,benji_none,0.00,low,https://www.franklintempleton.com/forms-literature/download/29386-FF,VERIFIED,Business-day processing only: fund cut-off 5:00 PM ET (fact sheet dated 4 Nov 2026). No 24/7 redemption channel documented: immediate liquidity is zero; requests settle on the next business day
+BENJI,benji_none,0.00,base,https://www.franklintempleton.com/forms-literature/download/29386-FF,VERIFIED,Business-day processing only: fund cut-off 5:00 PM ET (fact sheet dated 4 Nov 2026). No 24/7 redemption channel documented: immediate liquidity is zero; requests settle on the next business day
+BENJI,benji_none,0.00,high,https://www.franklintempleton.com/forms-literature/download/29386-FF,VERIFIED,Business-day processing only: fund cut-off 5:00 PM ET (fact sheet dated 4 Nov 2026). No 24/7 redemption channel documented: immediate liquidity is zero; requests settle on the next business day
+FYOXX,fyoxx_none,0.00,low,https://app.rwa.xyz/assets/FDIT,VERIFIED,Daily USD redemptions; no 24/7 channel documented
+FYOXX,fyoxx_none,0.00,base,https://app.rwa.xyz/assets/FDIT,VERIFIED,Same as low
+FYOXX,fyoxx_none,0.00,high,https://app.rwa.xyz/assets/FDIT,VERIFIED,Same as low
+JLTXX,jltxx_none,0.00,low,https://www.prnewswire.com/news-releases/j-p-morgan-asset-management-launches-second-tokenized-money-market-fund-on-ethereum-302771391.html,ASSUMPTION,Subscriptions and redemptions through Morgan Money on business days; reports on the prospectus name USDC as the only supported stablecoin. No instant liquidity amount is disclosed: set to zero
+JLTXX,jltxx_none,0.00,base,https://www.prnewswire.com/news-releases/j-p-morgan-asset-management-launches-second-tokenized-money-market-fund-on-ethereum-302771391.html,ASSUMPTION,Subscriptions and redemptions through Morgan Money on business days; reports on the prospectus name USDC as the only supported stablecoin. No instant liquidity amount is disclosed: set to zero
+JLTXX,jltxx_none,0.00,high,https://www.prnewswire.com/news-releases/j-p-morgan-asset-management-launches-second-tokenized-money-market-fund-on-ethereum-302771391.html,ASSUMPTION,Subscriptions and redemptions through Morgan Money on business days; reports on the prospectus name USDC as the only supported stablecoin. No instant liquidity amount is disclosed: set to zero
+USDtb,usdtb_cash,0.00,low,https://learn.anchorage.com/09.30.26_USDtb-Stablecoin-Attestation-Report-signed.pdf,ASSUMPTION,Cash cannot be verified after the 30 Sep 2026 attestation
+USDtb,usdtb_cash,3.69,base,https://learn.anchorage.com/09.30.26_USDtb-Stablecoin-Attestation-Report-signed.pdf,ASSUMPTION,Cash share at 30 Sep 2026 (1.06%) applied to current supply
+USDtb,usdtb_cash,5.71,high,https://learn.anchorage.com/09.30.26_USDtb-Stablecoin-Attestation-Report-signed.pdf,VERIFIED,Cash amount attested at 30 Sep 2026
+USDGO,usdgo_cash,0.00,low,https://www.usdgo.com/en/transparency,ASSUMPTION,No cash assumed
+USDGO,usdgo_cash,50.30,base,https://www.usdgo.com/en/transparency,DERIVED,4.65% disclosed cash share x 1081.72 supply
+USDGO,usdgo_cash,50.30,high,https://www.usdgo.com/en/transparency,DERIVED,Same as base

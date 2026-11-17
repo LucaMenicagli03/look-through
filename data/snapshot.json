@@ -1,0 +1,50 @@
+{
+ "snapshot_date": "2026-11-16",
+ "version": "beta-0.5",
+ "gross_core_usd_m": 13960.0,
+ "gross_source": "https://app.rwa.xyz/treasuries",
+ "gross_note": "rwa.xyz 'Distributed Value' for tokenized US Treasury funds as of 16 Nov 2026 (123 assets, down 5.2% in 30 days), displayed to the nearest 10 million",
+ "extended_perimeters": {
+  "core+USDtb": [
+   "USDtb"
+  ],
+  "core+USDtb+USDGO": [
+   "USDtb",
+   "USDGO"
+  ]
+ },
+ "max_staleness_days": {
+  "holdings": 3,
+  "liquidity": 47
+ },
+ "as_of_by_source": {
+  "rwa.xyz": "2026-11-16",
+  "onchain_declared_addresses": "2026-11-16",
+  "ondo_ousg_table": "2026-11-16T16:00-05:00",
+  "usdgo_transparency": "2026-11-13",
+  "anchorage_attestations": "2026-09-30"
+ },
+ "blocks": null,
+ "blocks_note": "Block numbers were not recorded; on-chain balances were read from block explorers on 16 Nov 2026",
+ "wallet_coverage": {
+  "BUIDL": 0.364,
+  "OUSG": 0.0
+ },
+ "limits": [
+  "Positions, not wallets. Only 36.4% of BUIDL supply and 0% of OUSG supply can be attributed to a named holder from public wallet data. The map therefore relies on positions disclosed by issuers, and on on-chain balances only at addresses the issuer itself names.",
+  "Mixed dates. Every row carries its own as-of date; amounts are not rescaled to the snapshot date.",
+  "The net figure is a range. For OUSG's BENJI position the issuer does not disclose whether it is held as tokens counted in the gross total.",
+  "FYOXX. The FDIT token is classified as 'Represented' by the aggregator and sits outside the gross total, so OUSG's position creates no double count. The position Ondo discloses is larger than the token total the aggregator reports; this discrepancy is open and is shown, not resolved.",
+  "Stablecoin positions are on-chain balances at issuer-named reserve addresses. They are lower bounds if undisclosed addresses exist.",
+  "USDGO's JLTXX position is derived (disclosed reserve share times supply), not a balance.",
+  "T+1 means the next business day: a shock on a Friday evening settles on Monday. Funds redeem at NAV; prices and forced sales are not modelled.",
+  "Liquidity is conservative and partly assumed. SWEEP uses a parametric scenario (0, 10%, 25% of AUM) because the fund states 24/7 redemptions without an amount. For BENJI, FYOXX and JLTXX no instant redemption channel was read from a primary source, so they are set to zero. BUIDL's same-day fund redemption is not included.",
+  "BUIDL liquidity counts only the stablecoin leg of the Securitize/Ethena facility. The facility's sponsor belongs to the same group as BUIDL's largest mapped holder (USDtb), so the two are not independent.",
+  "BUIDL supply fell 24.4% in the 30 days to 16 Nov 2026 (aggregator data). No redemption suspension is known; this was not verified with the issuer.",
+  "Scale. The sector is about USD 14 billion: this is an emerging concentration risk, not a systemic one.",
+  "SWEEP's size is uncertain on the snapshot day: its own row read 284.3 million while the platform total for the same single asset read 334.3 million. Shares of SWEEP are shown as a range; cascade percentages of SWEEP's AUM use the asset row (the higher share).",
+  "BUIDL also has a Circle smart contract that swaps BUIDL for USDC 24/7 (since April 2024). Its pool size is not public, so it is not counted as liquidity. Ondo said in 2024 that it used this route for OUSG's instant redemptions: OUSG's 24/7 liquidity may depend on BUIDL's, which the model does not capture.",
+  "Drift after the snapshot. On 17 Nov 2026 the aggregator showed the category at 14.20 billion (+1.7% in a day), BENJI +20.8%, BUIDL -2.8% and SWEEP at 334.4 million. Figures here are not updated: the snapshot stays dated 16 Nov 2026. Net size barely moves with these changes; concentration shares do.",
+  "Status labels: VERIFIED = read from the cited source on the as-of date; DERIVED = product of two issuer-disclosed figures; ASSUMPTION = declared scenario input."
+ ]
+}

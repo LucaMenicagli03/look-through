@@ -1,0 +1,3607 @@
+{
+ "snapshot": {
+  "snapshot_date": "2026-11-16",
+  "version": "beta-0.5",
+  "gross_core_usd_m": 13960.0,
+  "gross_source": "https://app.rwa.xyz/treasuries",
+  "gross_note": "rwa.xyz 'Distributed Value' for tokenized US Treasury funds as of 16 Nov 2026 (123 assets, down 5.2% in 30 days), displayed to the nearest 10 million",
+  "extended_perimeters": {
+   "core+USDtb": [
+    "USDtb"
+   ],
+   "core+USDtb+USDGO": [
+    "USDtb",
+    "USDGO"
+   ]
+  },
+  "max_staleness_days": {
+   "holdings": 3,
+   "liquidity": 47
+  },
+  "as_of_by_source": {
+   "rwa.xyz": "2026-11-16",
+   "onchain_declared_addresses": "2026-11-16",
+   "ondo_ousg_table": "2026-11-16T16:00-05:00",
+   "usdgo_transparency": "2026-11-13",
+   "anchorage_attestations": "2026-09-30"
+  },
+  "blocks": null,
+  "blocks_note": "Block numbers were not recorded; on-chain balances were read from block explorers on 16 Nov 2026",
+  "wallet_coverage": {
+   "BUIDL": 0.364,
+   "OUSG": 0.0
+  },
+  "limits": [
+   "Positions, not wallets. Only 36.4% of BUIDL supply and 0% of OUSG supply can be attributed to a named holder from public wallet data. The map therefore relies on positions disclosed by issuers, and on on-chain balances only at addresses the issuer itself names.",
+   "Mixed dates. Every row carries its own as-of date; amounts are not rescaled to the snapshot date.",
+   "The net figure is a range. For OUSG's BENJI position the issuer does not disclose whether it is held as tokens counted in the gross total.",
+   "FYOXX. The FDIT token is classified as 'Represented' by the aggregator and sits outside the gross total, so OUSG's position creates no double count. The position Ondo discloses is larger than the token total the aggregator reports; this discrepancy is open and is shown, not resolved.",
+   "Stablecoin positions are on-chain balances at issuer-named reserve addresses. They are lower bounds if undisclosed addresses exist.",
+   "USDGO's JLTXX position is derived (disclosed reserve share times supply), not a balance.",
+   "T+1 means the next business day: a shock on a Friday evening settles on Monday. Funds redeem at NAV; prices and forced sales are not modelled.",
+   "Liquidity is conservative and partly assumed. SWEEP uses a parametric scenario (0, 10%, 25% of AUM) because the fund states 24/7 redemptions without an amount. For BENJI, FYOXX and JLTXX no instant redemption channel was read from a primary source, so they are set to zero. BUIDL's same-day fund redemption is not included.",
+   "BUIDL liquidity counts only the stablecoin leg of the Securitize/Ethena facility. The facility's sponsor belongs to the same group as BUIDL's largest mapped holder (USDtb), so the two are not independent.",
+   "BUIDL supply fell 24.4% in the 30 days to 16 Nov 2026 (aggregator data). No redemption suspension is known; this was not verified with the issuer.",
+   "Scale. The sector is about USD 14 billion: this is an emerging concentration risk, not a systemic one.",
+   "SWEEP's size is uncertain on the snapshot day: its own row read 284.3 million while the platform total for the same single asset read 334.3 million. Shares of SWEEP are shown as a range; cascade percentages of SWEEP's AUM use the asset row (the higher share).",
+   "BUIDL also has a Circle smart contract that swaps BUIDL for USDC 24/7 (since April 2024). Its pool size is not public, so it is not counted as liquidity. Ondo said in 2024 that it used this route for OUSG's instant redemptions: OUSG's 24/7 liquidity may depend on BUIDL's, which the model does not capture.",
+   "Drift after the snapshot. On 17 Nov 2026 the aggregator showed the category at 14.20 billion (+1.7% in a day), BENJI +20.8%, BUIDL -2.8% and SWEEP at 334.4 million. Figures here are not updated: the snapshot stays dated 16 Nov 2026. Net size barely moves with these changes; concentration shares do.",
+   "Status labels: VERIFIED = read from the cited source on the as-of date; DERIVED = product of two issuer-disclosed figures; ASSUMPTION = declared scenario input."
+  ]
+ },
+ "products": [
+  {
+   "id": "BUIDL",
+   "name": "BlackRock USD Institutional Digital Liquidity Fund",
+   "issuer": "BlackRock / Securitize",
+   "type": "fund",
+   "in_core": true,
+   "supply_usd_m": "1653.53",
+   "supply_alt_usd_m": "",
+   "as_of": "2026-11-16",
+   "source_url": "https://app.rwa.xyz/treasuries",
+   "status": "VERIFIED",
+   "note": "Aggregator figure. Summing the per-chain balances read from explorers on the same day gives 1637.6; the gap is on Solana (467.45 vs 483.83)",
+   "supply": 1653.53,
+   "supply_alt": null
+  },
+  {
+   "id": "OUSG",
+   "name": "Ondo Short-Term US Government Bond Fund",
+   "issuer": "Ondo",
+   "type": "wrapper",
+   "in_core": true,
+   "supply_usd_m": "312.85",
+   "supply_alt_usd_m": "",
+   "as_of": "2026-11-16",
+   "source_url": "https://app.rwa.xyz/treasuries",
+   "status": "VERIFIED",
+   "note": "Aggregator 312854612. Ondo's own page: TVL 312.85 and underlying assets 313505704 as of 16 Nov 2026 4:00pm EST",
+   "supply": 312.85,
+   "supply_alt": null
+  },
+  {
+   "id": "SWEEP",
+   "name": "State Street Galaxy OnChain Liquidity Sweep Fund",
+   "issuer": "State Street / Galaxy",
+   "type": "fund",
+   "in_core": true,
+   "supply_usd_m": "284.34",
+   "supply_alt_usd_m": "334.30",
+   "as_of": "2026-11-16",
+   "source_url": "https://app.rwa.xyz/treasuries",
+   "status": "VERIFIED",
+   "note": "Asset row on the snapshot day. The same rwa.xyz page showed 334.3 for the Galaxy Digital platform (one asset: SWEEP) on 16 Nov 2026; on 17 Nov the asset row also read 334.43. Shares of SWEEP are therefore shown as a range",
+   "supply": 284.34,
+   "supply_alt": 334.3
+  },
+  {
+   "id": "BENJI",
+   "name": "Franklin OnChain US Government Money Fund (FOBXX)",
+   "issuer": "Franklin Templeton",
+   "type": "fund",
+   "in_core": true,
+   "supply_usd_m": "1280.29",
+   "supply_alt_usd_m": "",
+   "as_of": "2026-11-16",
+   "source_url": "https://app.rwa.xyz/treasuries",
+   "status": "VERIFIED",
+   "note": "BENJI line only. The aggregator lists iBENJI (1714.82) sgBENJI (228.54) and gBENJI (53.53) separately; Ondo discloses BENJI without naming the share class",
+   "supply": 1280.29,
+   "supply_alt": null
+  },
+  {
+   "id": "FYOXX",
+   "name": "Fidelity Treasury Digital Fund (FDIT token)",
+   "issuer": "Fidelity",
+   "type": "fund",
+   "in_core": true,
+   "supply_usd_m": "22.15",
+   "supply_alt_usd_m": "",
+   "as_of": "2026-11-16",
+   "source_url": "https://app.rwa.xyz/assets/FDIT",
+   "status": "VERIFIED",
+   "note": "Classified as Represented (not Distributed) by the aggregator so it is outside the gross total. OUSG's disclosed position (23.64) exceeds the token total reported here (22.15): open discrepancy",
+   "supply": 22.15,
+   "supply_alt": null
+  },
+  {
+   "id": "JLTXX",
+   "name": "JPMorgan OnChain Liquidity-Token Money Market Fund",
+   "issuer": "JPMorgan / Kinexys",
+   "type": "fund",
+   "in_core": true,
+   "supply_usd_m": "768.11",
+   "supply_alt_usd_m": "",
+   "as_of": "2026-11-16",
+   "source_url": "https://app.rwa.xyz/treasuries",
+   "status": "VERIFIED",
+   "note": "Included in the Distributed gross total",
+   "supply": 768.11,
+   "supply_alt": null
+  },
+  {
+   "id": "USDtb",
+   "name": "USDtb",
+   "issuer": "Ethena / Anchorage Digital Bank",
+   "type": "stablecoin",
+   "in_core": false,
+   "supply_usd_m": "348.30",
+   "supply_alt_usd_m": "",
+   "as_of": "2026-11-16",
+   "source_url": "https://www.diadata.org/map/global-stablecoins/stablecoin/usdtb/",
+   "status": "VERIFIED",
+   "note": "Secondary source (DIA): Ethereum 318.2 + Solana 30.1. Last issuer attestation (30 Sep 2026): 537.49",
+   "supply": 348.3,
+   "supply_alt": null
+  },
+  {
+   "id": "USDGO",
+   "name": "USDGO",
+   "issuer": "Anchorage Digital Bank / OSL",
+   "type": "stablecoin",
+   "in_core": false,
+   "supply_usd_m": "1081.72",
+   "supply_alt_usd_m": "",
+   "as_of": "2026-11-13",
+   "source_url": "https://www.usdgo.com/en/transparency",
+   "status": "VERIFIED",
+   "note": "Sum by chain: Solana 1064.08 + Morph 17.58 + Ethereum 0.05. Last issuer attestation (30 Sep 2026): 1186.63",
+   "supply": 1081.72,
+   "supply_alt": null
+  }
+ ],
+ "holdings": [
+  {
+   "holder_id": "OUSG",
+   "asset_id": "SWEEP",
+   "amount_usd_m": "152.01",
+   "amount_high_usd_m": "",
+   "as_of": "2026-11-16",
+   "source_url": "https://ondo.finance/ousg",
+   "balance_source_urls": "",
+   "method": "issuer_disclosure",
+   "status": "VERIFIED",
+   "counted_in_gross": "yes",
+   "note": "Ondo portfolio table as of 16 Nov 2026 4:00pm EST: 152011671 USD (48.49%). SWEEP exists only as a token so the position is in token form",
+   "amount": 152.01,
+   "amount_high": 152.01
+  },
+  {
+   "holder_id": "OUSG",
+   "asset_id": "BUIDL",
+   "amount_usd_m": "102.31",
+   "amount_high_usd_m": "",
+   "as_of": "2026-11-16",
+   "source_url": "https://ondo.finance/ousg",
+   "balance_source_urls": "",
+   "method": "issuer_disclosure",
+   "status": "VERIFIED",
+   "counted_in_gross": "yes",
+   "note": "Ondo portfolio table: 102314931 USD (32.64%). Token form is corroborated by an on-chain BUIDL-I balance of 100.71 on Ethereum (wallet attribution is an assumption)",
+   "amount": 102.31,
+   "amount_high": 102.31
+  },
+  {
+   "holder_id": "OUSG",
+   "asset_id": "BENJI",
+   "amount_usd_m": "31.71",
+   "amount_high_usd_m": "",
+   "as_of": "2026-11-16",
+   "source_url": "https://ondo.finance/ousg",
+   "balance_source_urls": "",
+   "method": "issuer_disclosure",
+   "status": "VERIFIED",
+   "counted_in_gross": "unknown",
+   "note": "Ondo portfolio table: 31707267 USD (10.11%). Ondo does not disclose the holding form or share class; this drives the net range",
+   "amount": 31.71,
+   "amount_high": 31.71
+  },
+  {
+   "holder_id": "OUSG",
+   "asset_id": "FYOXX",
+   "amount_usd_m": "23.64",
+   "amount_high_usd_m": "",
+   "as_of": "2026-11-16",
+   "source_url": "https://ondo.finance/ousg",
+   "balance_source_urls": "",
+   "method": "issuer_disclosure",
+   "status": "VERIFIED",
+   "counted_in_gross": "no",
+   "note": "Ondo portfolio table: 23640401 USD (7.54%). The FDIT token is outside the gross total so there is no double count. Position exceeds the aggregator's token total (22.15): open discrepancy",
+   "amount": 23.64,
+   "amount_high": 23.64
+  },
+  {
+   "holder_id": "USDtb",
+   "asset_id": "BUIDL",
+   "amount_usd_m": "345.72",
+   "amount_high_usd_m": "",
+   "as_of": "2026-11-16",
+   "source_url": "https://learn.anchorage.com/09.30.26_USDtb-Stablecoin-Attestation-Report-signed.pdf",
+   "balance_source_urls": "https://solscan.io/account/HYP6YSsagbnNtENSXbvNE95a6SUM83fLXiFYQMqLM9sz https://bscscan.com/address/0x2004F7f7B600d962170d7f28114Cc123c5e98451 https://snowtrace.io/address/0x2004F7f7B600d962170d7f28114Cc123c5e98451 https://explorer.aptoslabs.com/account/0xb95ce931098b76d171652108644838eeb3584a6bf89751b0c406b0a223d809a4/coins?network=mainnet",
+   "method": "onchain",
+   "status": "VERIFIED",
+   "counted_in_gross": "yes",
+   "note": "On-chain balances on 16 Nov 2026 at the four reserve addresses named in the issuer attestation: Solana 147.91 + BNB Chain 111.97 + Avalanche 37.67 + Aptos 48.17. Equals 99.3% of supply. A lower bound if undisclosed addresses exist. source_url proves the reserve addresses; balance_source_urls are the explorer pages for the balances (read 16 Nov 2026; they show current values)",
+   "amount": 345.72,
+   "amount_high": 345.72
+  },
+  {
+   "holder_id": "USDGO",
+   "asset_id": "BUIDL",
+   "amount_usd_m": "195.97",
+   "amount_high_usd_m": "",
+   "as_of": "2026-11-16",
+   "source_url": "https://learn.anchorage.com/09.30.26_USDGO-Stablecoin-Attestation-Report-signed.pdf",
+   "balance_source_urls": "https://solscan.io/account/9yGxs2pSFFBZhJVrwRAgbKHaLQnuHa7BpmCRsHuzG968",
+   "method": "onchain",
+   "status": "VERIFIED",
+   "counted_in_gross": "yes",
+   "note": "On-chain balance on 16 Nov 2026 at the Solana reserve address named in the issuer attestation. Cross-check: 18.07% disclosed share x 1081.72 supply = 195.47. source_url proves the reserve addresses; balance_source_urls are the explorer pages for the balances (read 16 Nov 2026; they show current values)",
+   "amount": 195.97,
+   "amount_high": 195.97
+  },
+  {
+   "holder_id": "USDGO",
+   "asset_id": "JLTXX",
+   "amount_usd_m": "735.89",
+   "amount_high_usd_m": "",
+   "as_of": "2026-11-13",
+   "source_url": "https://www.usdgo.com/en/transparency",
+   "balance_source_urls": "",
+   "method": "issuer_disclosure",
+   "status": "DERIVED",
+   "counted_in_gross": "yes",
+   "note": "Derived: 68.03% disclosed reserve share x 1081.72 supply (assumes reserves equal supply). No reserve address is published. Last attested amount (30 Sep 2026): 525.17",
+   "amount": 735.89,
+   "amount_high": 735.89
+  }
+ ],
+ "other_reserves": [
+  {
+   "holder_id": "USDGO",
+   "asset": "Goldman Sachs STBXX (traditional fund)",
+   "amount_usd_m": "90.22",
+   "as_of": "2026-11-13",
+   "source_url": "https://www.usdgo.com/en/transparency",
+   "status": "DERIVED",
+   "note": "8.34% x 1081.72. No evidence of tokenisation: off-map",
+   "amount": 90.22
+  },
+  {
+   "holder_id": "USDGO",
+   "asset": "US Treasuries separately managed account",
+   "amount_usd_m": "9.95",
+   "as_of": "2026-11-13",
+   "source_url": "https://www.usdgo.com/en/transparency",
+   "status": "DERIVED",
+   "note": "0.92% x 1081.72: off-map",
+   "amount": 9.95
+  }
+ ],
+ "liquidity": [
+  {
+   "product_id": "BUIDL",
+   "facility": "securitize_ethena",
+   "amount_usd_m": "25.00",
+   "scenario": "low",
+   "source_url": "https://www.prnewswire.com/news-releases/securitize-and-ethena-launch-100-million-liquidity-facility-for-blackrocks-buidl-302937776.html",
+   "status": "VERIFIED",
+   "note": "Funded USDC leg of the Securitize/Ethena facility only. The 25 held in BUIDL serves the opposite direction and cannot fund BUIDL redemptions",
+   "amount": 25.0
+  },
+  {
+   "product_id": "BUIDL",
+   "facility": "securitize_ethena",
+   "amount_usd_m": "75.00",
+   "scenario": "base",
+   "source_url": "https://www.prnewswire.com/news-releases/securitize-and-ethena-launch-100-million-liquidity-facility-for-blackrocks-buidl-302937776.html",
+   "status": "ASSUMPTION",
+   "note": "25 funded USDC plus the additional 50 stated as available within an hour (assumed to be in stablecoins)",
+   "amount": 75.0
+  },
+  {
+   "product_id": "BUIDL",
+   "facility": "securitize_ethena",
+   "amount_usd_m": "100.00",
+   "scenario": "high",
+   "source_url": "https://www.prnewswire.com/news-releases/securitize-and-ethena-launch-100-million-liquidity-facility-for-blackrocks-buidl-302937776.html",
+   "status": "ASSUMPTION",
+   "note": "Full stated maximum capacity assumed in stablecoins. Same-day fund redemption not included: terms not read from a primary source",
+   "amount": 100.0
+  },
+  {
+   "product_id": "OUSG",
+   "facility": "ousg_usdc",
+   "amount_usd_m": "3.65",
+   "scenario": "low",
+   "source_url": "https://ondo.finance/ousg",
+   "status": "VERIFIED",
+   "note": "USDC held by the fund: 3647708 USD as of 16 Nov 2026",
+   "amount": 3.65
+  },
+  {
+   "product_id": "OUSG",
+   "facility": "ousg_usdc",
+   "amount_usd_m": "3.65",
+   "scenario": "base",
+   "source_url": "https://ondo.finance/ousg",
+   "status": "VERIFIED",
+   "note": "Same as low",
+   "amount": 3.65
+  },
+  {
+   "product_id": "OUSG",
+   "facility": "ousg_usdc",
+   "amount_usd_m": "3.65",
+   "scenario": "high",
+   "source_url": "https://ondo.finance/ousg",
+   "status": "VERIFIED",
+   "note": "Same as low",
+   "amount": 3.65
+  },
+  {
+   "product_id": "SWEEP",
+   "facility": "sweep_pyusd",
+   "amount_usd_m": "0.00",
+   "scenario": "low",
+   "source_url": "https://am.galaxy.com/galaxy-state-street-sweep-fund/",
+   "status": "VERIFIED",
+   "note": "The fund offers 24/7 PYUSD redemptions subject to portfolio availability; no amount is disclosed",
+   "amount": 0.0
+  },
+  {
+   "product_id": "SWEEP",
+   "facility": "sweep_pyusd",
+   "amount_usd_m": "28.43",
+   "scenario": "base",
+   "source_url": "https://am.galaxy.com/galaxy-state-street-sweep-fund/",
+   "status": "ASSUMPTION",
+   "note": "Parametric: 10% of AUM",
+   "amount": 28.43
+  },
+  {
+   "product_id": "SWEEP",
+   "facility": "sweep_pyusd",
+   "amount_usd_m": "71.08",
+   "scenario": "high",
+   "source_url": "https://am.galaxy.com/galaxy-state-street-sweep-fund/",
+   "status": "ASSUMPTION",
+   "note": "Parametric: 25% of AUM",
+   "amount": 71.08
+  },
+  {
+   "product_id": "BENJI",
+   "facility": "benji_none",
+   "amount_usd_m": "0.00",
+   "scenario": "low",
+   "source_url": "https://www.franklintempleton.com/forms-literature/download/29386-FF",
+   "status": "VERIFIED",
+   "note": "Business-day processing only: fund cut-off 5:00 PM ET (fact sheet dated 4 Nov 2026). No 24/7 redemption channel documented: immediate liquidity is zero; requests settle on the next business day",
+   "amount": 0.0
+  },
+  {
+   "product_id": "BENJI",
+   "facility": "benji_none",
+   "amount_usd_m": "0.00",
+   "scenario": "base",
+   "source_url": "https://www.franklintempleton.com/forms-literature/download/29386-FF",
+   "status": "VERIFIED",
+   "note": "Business-day processing only: fund cut-off 5:00 PM ET (fact sheet dated 4 Nov 2026). No 24/7 redemption channel documented: immediate liquidity is zero; requests settle on the next business day",
+   "amount": 0.0
+  },
+  {
+   "product_id": "BENJI",
+   "facility": "benji_none",
+   "amount_usd_m": "0.00",
+   "scenario": "high",
+   "source_url": "https://www.franklintempleton.com/forms-literature/download/29386-FF",
+   "status": "VERIFIED",
+   "note": "Business-day processing only: fund cut-off 5:00 PM ET (fact sheet dated 4 Nov 2026). No 24/7 redemption channel documented: immediate liquidity is zero; requests settle on the next business day",
+   "amount": 0.0
+  },
+  {
+   "product_id": "FYOXX",
+   "facility": "fyoxx_none",
+   "amount_usd_m": "0.00",
+   "scenario": "low",
+   "source_url": "https://app.rwa.xyz/assets/FDIT",
+   "status": "VERIFIED",
+   "note": "Daily USD redemptions; no 24/7 channel documented",
+   "amount": 0.0
+  },
+  {
+   "product_id": "FYOXX",
+   "facility": "fyoxx_none",
+   "amount_usd_m": "0.00",
+   "scenario": "base",
+   "source_url": "https://app.rwa.xyz/assets/FDIT",
+   "status": "VERIFIED",
+   "note": "Same as low",
+   "amount": 0.0
+  },
+  {
+   "product_id": "FYOXX",
+   "facility": "fyoxx_none",
+   "amount_usd_m": "0.00",
+   "scenario": "high",
+   "source_url": "https://app.rwa.xyz/assets/FDIT",
+   "status": "VERIFIED",
+   "note": "Same as low",
+   "amount": 0.0
+  },
+  {
+   "product_id": "JLTXX",
+   "facility": "jltxx_none",
+   "amount_usd_m": "0.00",
+   "scenario": "low",
+   "source_url": "https://www.prnewswire.com/news-releases/j-p-morgan-asset-management-launches-second-tokenized-money-market-fund-on-ethereum-302771391.html",
+   "status": "ASSUMPTION",
+   "note": "Subscriptions and redemptions through Morgan Money on business days; reports on the prospectus name USDC as the only supported stablecoin. No instant liquidity amount is disclosed: set to zero",
+   "amount": 0.0
+  },
+  {
+   "product_id": "JLTXX",
+   "facility": "jltxx_none",
+   "amount_usd_m": "0.00",
+   "scenario": "base",
+   "source_url": "https://www.prnewswire.com/news-releases/j-p-morgan-asset-management-launches-second-tokenized-money-market-fund-on-ethereum-302771391.html",
+   "status": "ASSUMPTION",
+   "note": "Subscriptions and redemptions through Morgan Money on business days; reports on the prospectus name USDC as the only supported stablecoin. No instant liquidity amount is disclosed: set to zero",
+   "amount": 0.0
+  },
+  {
+   "product_id": "JLTXX",
+   "facility": "jltxx_none",
+   "amount_usd_m": "0.00",
+   "scenario": "high",
+   "source_url": "https://www.prnewswire.com/news-releases/j-p-morgan-asset-management-launches-second-tokenized-money-market-fund-on-ethereum-302771391.html",
+   "status": "ASSUMPTION",
+   "note": "Subscriptions and redemptions through Morgan Money on business days; reports on the prospectus name USDC as the only supported stablecoin. No instant liquidity amount is disclosed: set to zero",
+   "amount": 0.0
+  },
+  {
+   "product_id": "USDtb",
+   "facility": "usdtb_cash",
+   "amount_usd_m": "0.00",
+   "scenario": "low",
+   "source_url": "https://learn.anchorage.com/09.30.26_USDtb-Stablecoin-Attestation-Report-signed.pdf",
+   "status": "ASSUMPTION",
+   "note": "Cash cannot be verified after the 30 Sep 2026 attestation",
+   "amount": 0.0
+  },
+  {
+   "product_id": "USDtb",
+   "facility": "usdtb_cash",
+   "amount_usd_m": "3.69",
+   "scenario": "base",
+   "source_url": "https://learn.anchorage.com/09.30.26_USDtb-Stablecoin-Attestation-Report-signed.pdf",
+   "status": "ASSUMPTION",
+   "note": "Cash share at 30 Sep 2026 (1.06%) applied to current supply",
+   "amount": 3.69
+  },
+  {
+   "product_id": "USDtb",
+   "facility": "usdtb_cash",
+   "amount_usd_m": "5.71",
+   "scenario": "high",
+   "source_url": "https://learn.anchorage.com/09.30.26_USDtb-Stablecoin-Attestation-Report-signed.pdf",
+   "status": "VERIFIED",
+   "note": "Cash amount attested at 30 Sep 2026",
+   "amount": 5.71
+  },
+  {
+   "product_id": "USDGO",
+   "facility": "usdgo_cash",
+   "amount_usd_m": "0.00",
+   "scenario": "low",
+   "source_url": "https://www.usdgo.com/en/transparency",
+   "status": "ASSUMPTION",
+   "note": "No cash assumed",
+   "amount": 0.0
+  },
+  {
+   "product_id": "USDGO",
+   "facility": "usdgo_cash",
+   "amount_usd_m": "50.30",
+   "scenario": "base",
+   "source_url": "https://www.usdgo.com/en/transparency",
+   "status": "DERIVED",
+   "note": "4.65% disclosed cash share x 1081.72 supply",
+   "amount": 50.3
+  },
+  {
+   "product_id": "USDGO",
+   "facility": "usdgo_cash",
+   "amount_usd_m": "50.30",
+   "scenario": "high",
+   "source_url": "https://www.usdgo.com/en/transparency",
+   "status": "DERIVED",
+   "note": "Same as base",
+   "amount": 50.3
+  }
+ ],
+ "acyclic": true,
+ "net": {
+  "core": {
+   "gross": 13960.0,
+   "net_low": 13673.97,
+   "net_high": 13705.68,
+   "double_count_low": 254.32,
+   "double_count_high": 286.03
+  },
+  "core+USDtb": {
+   "gross": 14308.3,
+   "net_low": 13676.55,
+   "net_high": 13708.259999999998,
+   "double_count_low": 600.04,
+   "double_count_high": 631.75
+  },
+  "core+USDtb+USDGO": {
+   "gross": 15390.02,
+   "net_low": 13826.41,
+   "net_high": 13858.12,
+   "double_count_low": 1531.9,
+   "double_count_high": 1563.6100000000001
+  }
+ },
+ "concentration": [
+  {
+   "holder": "OUSG",
+   "asset": "SWEEP",
+   "share_of_asset_supply": 0.5346064570584511,
+   "share_low": 0.4547113371223452,
+   "share_high": 0.5346064570584511,
+   "source_mismatch": false,
+   "counted_in_gross": "yes"
+  },
+  {
+   "holder": "OUSG",
+   "asset": "BUIDL",
+   "share_of_asset_supply": 0.06187368841206389,
+   "share_low": 0.06187368841206389,
+   "share_high": 0.06187368841206389,
+   "source_mismatch": false,
+   "counted_in_gross": "yes"
+  },
+  {
+   "holder": "OUSG",
+   "asset": "BENJI",
+   "share_of_asset_supply": 0.02476782603941295,
+   "share_low": 0.02476782603941295,
+   "share_high": 0.02476782603941295,
+   "source_mismatch": false,
+   "counted_in_gross": "unknown"
+  },
+  {
+   "holder": "OUSG",
+   "asset": "FYOXX",
+   "share_of_asset_supply": 1.0672686230248307,
+   "share_low": 1.0672686230248307,
+   "share_high": 1.0672686230248307,
+   "source_mismatch": true,
+   "counted_in_gross": "no"
+  },
+  {
+   "holder": "USDtb",
+   "asset": "BUIDL",
+   "share_of_asset_supply": 0.2090799683102212,
+   "share_low": 0.2090799683102212,
+   "share_high": 0.2090799683102212,
+   "source_mismatch": false,
+   "counted_in_gross": "yes"
+  },
+  {
+   "holder": "USDGO",
+   "asset": "BUIDL",
+   "share_of_asset_supply": 0.11851614424897039,
+   "share_low": 0.11851614424897039,
+   "share_high": 0.11851614424897039,
+   "source_mismatch": false,
+   "counted_in_gross": "yes"
+  },
+  {
+   "holder": "USDGO",
+   "asset": "JLTXX",
+   "share_of_asset_supply": 0.9580528830506047,
+   "share_low": 0.9580528830506047,
+   "share_high": 0.9580528830506047,
+   "source_mismatch": false,
+   "counted_in_gross": "yes"
+  }
+ ],
+ "mapped_share": {
+  "SWEEP": {
+   "mapped_holdings": 152.01,
+   "holders": 1,
+   "share_of_asset_supply": 0.5346064570584511,
+   "share_low": 0.4547113371223452,
+   "share_high": 0.5346064570584511
+  },
+  "BUIDL": {
+   "mapped_holdings": 644.0,
+   "holders": 3,
+   "share_of_asset_supply": 0.38946980097125544,
+   "share_low": 0.38946980097125544,
+   "share_high": 0.38946980097125544
+  },
+  "BENJI": {
+   "mapped_holdings": 31.71,
+   "holders": 1,
+   "share_of_asset_supply": 0.02476782603941295,
+   "share_low": 0.02476782603941295,
+   "share_high": 0.02476782603941295
+  },
+  "FYOXX": {
+   "mapped_holdings": 23.64,
+   "holders": 1,
+   "share_of_asset_supply": 1.0672686230248307,
+   "share_low": 1.0672686230248307,
+   "share_high": 1.0672686230248307
+  },
+  "JLTXX": {
+   "mapped_holdings": 735.89,
+   "holders": 1,
+   "share_of_asset_supply": 0.9580528830506047,
+   "share_low": 0.9580528830506047,
+   "share_high": 0.9580528830506047
+  }
+ },
+ "cascades": [
+  {
+   "shocks": {
+    "OUSG": 0.1
+   },
+   "scenario": "low",
+   "variant": "pro_rata",
+   "demand": {
+    "OUSG": 31.332
+   },
+   "total_demand": 31.332,
+   "own_liquidity_paid": {
+    "OUSG": 0.365
+   },
+   "outside_map": {},
+   "funds": {
+    "SWEEP": {
+     "request": 15.201,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 15.201,
+     "request_over_aum": 0.05346064570584512,
+     "by_origin": {
+      "OUSG": {
+       "request": 15.201,
+       "immediate": 0.0
+      }
+     }
+    },
+    "BUIDL": {
+     "request": 10.231000000000002,
+     "liquidity_available": 25.0,
+     "liquidity_used": 10.231000000000002,
+     "coverage": 1.0,
+     "residual_t1": 0.0,
+     "request_over_aum": 0.00618736884120639,
+     "by_origin": {
+      "OUSG": {
+       "request": 10.231000000000002,
+       "immediate": 10.231000000000002
+      }
+     }
+    },
+    "BENJI": {
+     "request": 3.1710000000000003,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 3.1710000000000003,
+     "request_over_aum": 0.002476782603941295,
+     "by_origin": {
+      "OUSG": {
+       "request": 3.1710000000000003,
+       "immediate": 0.0
+      }
+     }
+    },
+    "FYOXX": {
+     "request": 2.3640000000000003,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 2.3640000000000003,
+     "request_over_aum": 0.10672686230248309,
+     "by_origin": {
+      "OUSG": {
+       "request": 2.3640000000000003,
+       "immediate": 0.0
+      }
+     }
+    }
+   },
+   "immediate_total": 10.596000000000002,
+   "immediate_share": 0.33818460360015323,
+   "t1_total": 20.736,
+   "outside_total": 0
+  },
+  {
+   "shocks": {
+    "OUSG": 0.1
+   },
+   "scenario": "low",
+   "variant": "liquid_first",
+   "demand": {
+    "OUSG": 31.332
+   },
+   "total_demand": 31.332,
+   "own_liquidity_paid": {
+    "OUSG": 3.65
+   },
+   "outside_map": {},
+   "funds": {
+    "SWEEP": {
+     "request": 13.588467788290762,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 13.588467788290762,
+     "request_over_aum": 0.04778950477699502,
+     "by_origin": {
+      "OUSG": {
+       "request": 13.588467788290762,
+       "immediate": 0.0
+      }
+     }
+    },
+    "BUIDL": {
+     "request": 9.145688700875127,
+     "liquidity_available": 25.0,
+     "liquidity_used": 9.145688700875127,
+     "coverage": 1.0,
+     "residual_t1": 0.0,
+     "request_over_aum": 0.00553100863055108,
+     "by_origin": {
+      "OUSG": {
+       "request": 9.145688700875127,
+       "immediate": 9.145688700875127
+      }
+     }
+    },
+    "BENJI": {
+     "request": 2.834618206477864,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 2.834618206477864,
+     "request_over_aum": 0.002214043854500046,
+     "by_origin": {
+      "OUSG": {
+       "request": 2.834618206477864,
+       "immediate": 0.0
+      }
+     }
+    },
+    "FYOXX": {
+     "request": 2.1132253043562503,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 2.1132253043562503,
+     "request_over_aum": 0.09540520561427768,
+     "by_origin": {
+      "OUSG": {
+       "request": 2.1132253043562503,
+       "immediate": 0.0
+      }
+     }
+    }
+   },
+   "immediate_total": 12.795688700875127,
+   "immediate_share": 0.40839042196077896,
+   "t1_total": 18.536311299124876,
+   "outside_total": 0
+  },
+  {
+   "shocks": {
+    "OUSG": 0.1
+   },
+   "scenario": "base",
+   "variant": "pro_rata",
+   "demand": {
+    "OUSG": 31.332
+   },
+   "total_demand": 31.332,
+   "own_liquidity_paid": {
+    "OUSG": 0.365
+   },
+   "outside_map": {},
+   "funds": {
+    "SWEEP": {
+     "request": 15.201,
+     "liquidity_available": 28.43,
+     "liquidity_used": 15.201,
+     "coverage": 1.0,
+     "residual_t1": 0.0,
+     "request_over_aum": 0.05346064570584512,
+     "by_origin": {
+      "OUSG": {
+       "request": 15.201,
+       "immediate": 15.201
+      }
+     }
+    },
+    "BUIDL": {
+     "request": 10.231000000000002,
+     "liquidity_available": 75.0,
+     "liquidity_used": 10.231000000000002,
+     "coverage": 1.0,
+     "residual_t1": 0.0,
+     "request_over_aum": 0.00618736884120639,
+     "by_origin": {
+      "OUSG": {
+       "request": 10.231000000000002,
+       "immediate": 10.231000000000002
+      }
+     }
+    },
+    "BENJI": {
+     "request": 3.1710000000000003,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 3.1710000000000003,
+     "request_over_aum": 0.002476782603941295,
+     "by_origin": {
+      "OUSG": {
+       "request": 3.1710000000000003,
+       "immediate": 0.0
+      }
+     }
+    },
+    "FYOXX": {
+     "request": 2.3640000000000003,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 2.3640000000000003,
+     "request_over_aum": 0.10672686230248309,
+     "by_origin": {
+      "OUSG": {
+       "request": 2.3640000000000003,
+       "immediate": 0.0
+      }
+     }
+    }
+   },
+   "immediate_total": 25.797,
+   "immediate_share": 0.8233435465338951,
+   "t1_total": 5.535,
+   "outside_total": 0
+  },
+  {
+   "shocks": {
+    "OUSG": 0.1
+   },
+   "scenario": "base",
+   "variant": "liquid_first",
+   "demand": {
+    "OUSG": 31.332
+   },
+   "total_demand": 31.332,
+   "own_liquidity_paid": {
+    "OUSG": 3.65
+   },
+   "outside_map": {},
+   "funds": {
+    "SWEEP": {
+     "request": 13.588467788290762,
+     "liquidity_available": 28.43,
+     "liquidity_used": 13.588467788290762,
+     "coverage": 1.0,
+     "residual_t1": 0.0,
+     "request_over_aum": 0.04778950477699502,
+     "by_origin": {
+      "OUSG": {
+       "request": 13.588467788290762,
+       "immediate": 13.588467788290762
+      }
+     }
+    },
+    "BUIDL": {
+     "request": 9.145688700875127,
+     "liquidity_available": 75.0,
+     "liquidity_used": 9.145688700875127,
+     "coverage": 1.0,
+     "residual_t1": 0.0,
+     "request_over_aum": 0.00553100863055108,
+     "by_origin": {
+      "OUSG": {
+       "request": 9.145688700875127,
+       "immediate": 9.145688700875127
+      }
+     }
+    },
+    "BENJI": {
+     "request": 2.834618206477864,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 2.834618206477864,
+     "request_over_aum": 0.002214043854500046,
+     "by_origin": {
+      "OUSG": {
+       "request": 2.834618206477864,
+       "immediate": 0.0
+      }
+     }
+    },
+    "FYOXX": {
+     "request": 2.1132253043562503,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 2.1132253043562503,
+     "request_over_aum": 0.09540520561427768,
+     "by_origin": {
+      "OUSG": {
+       "request": 2.1132253043562503,
+       "immediate": 0.0
+      }
+     }
+    }
+   },
+   "immediate_total": 26.38415648916589,
+   "immediate_share": 0.8420833808619267,
+   "t1_total": 4.947843510834114,
+   "outside_total": 0
+  },
+  {
+   "shocks": {
+    "OUSG": 0.1
+   },
+   "scenario": "high",
+   "variant": "pro_rata",
+   "demand": {
+    "OUSG": 31.332
+   },
+   "total_demand": 31.332,
+   "own_liquidity_paid": {
+    "OUSG": 0.365
+   },
+   "outside_map": {},
+   "funds": {
+    "SWEEP": {
+     "request": 15.201,
+     "liquidity_available": 71.08,
+     "liquidity_used": 15.201,
+     "coverage": 1.0,
+     "residual_t1": 0.0,
+     "request_over_aum": 0.05346064570584512,
+     "by_origin": {
+      "OUSG": {
+       "request": 15.201,
+       "immediate": 15.201
+      }
+     }
+    },
+    "BUIDL": {
+     "request": 10.231000000000002,
+     "liquidity_available": 100.0,
+     "liquidity_used": 10.231000000000002,
+     "coverage": 1.0,
+     "residual_t1": 0.0,
+     "request_over_aum": 0.00618736884120639,
+     "by_origin": {
+      "OUSG": {
+       "request": 10.231000000000002,
+       "immediate": 10.231000000000002
+      }
+     }
+    },
+    "BENJI": {
+     "request": 3.1710000000000003,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 3.1710000000000003,
+     "request_over_aum": 0.002476782603941295,
+     "by_origin": {
+      "OUSG": {
+       "request": 3.1710000000000003,
+       "immediate": 0.0
+      }
+     }
+    },
+    "FYOXX": {
+     "request": 2.3640000000000003,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 2.3640000000000003,
+     "request_over_aum": 0.10672686230248309,
+     "by_origin": {
+      "OUSG": {
+       "request": 2.3640000000000003,
+       "immediate": 0.0
+      }
+     }
+    }
+   },
+   "immediate_total": 25.797,
+   "immediate_share": 0.8233435465338951,
+   "t1_total": 5.535,
+   "outside_total": 0
+  },
+  {
+   "shocks": {
+    "OUSG": 0.1
+   },
+   "scenario": "high",
+   "variant": "liquid_first",
+   "demand": {
+    "OUSG": 31.332
+   },
+   "total_demand": 31.332,
+   "own_liquidity_paid": {
+    "OUSG": 3.65
+   },
+   "outside_map": {},
+   "funds": {
+    "SWEEP": {
+     "request": 13.588467788290762,
+     "liquidity_available": 71.08,
+     "liquidity_used": 13.588467788290762,
+     "coverage": 1.0,
+     "residual_t1": 0.0,
+     "request_over_aum": 0.04778950477699502,
+     "by_origin": {
+      "OUSG": {
+       "request": 13.588467788290762,
+       "immediate": 13.588467788290762
+      }
+     }
+    },
+    "BUIDL": {
+     "request": 9.145688700875127,
+     "liquidity_available": 100.0,
+     "liquidity_used": 9.145688700875127,
+     "coverage": 1.0,
+     "residual_t1": 0.0,
+     "request_over_aum": 0.00553100863055108,
+     "by_origin": {
+      "OUSG": {
+       "request": 9.145688700875127,
+       "immediate": 9.145688700875127
+      }
+     }
+    },
+    "BENJI": {
+     "request": 2.834618206477864,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 2.834618206477864,
+     "request_over_aum": 0.002214043854500046,
+     "by_origin": {
+      "OUSG": {
+       "request": 2.834618206477864,
+       "immediate": 0.0
+      }
+     }
+    },
+    "FYOXX": {
+     "request": 2.1132253043562503,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 2.1132253043562503,
+     "request_over_aum": 0.09540520561427768,
+     "by_origin": {
+      "OUSG": {
+       "request": 2.1132253043562503,
+       "immediate": 0.0
+      }
+     }
+    }
+   },
+   "immediate_total": 26.38415648916589,
+   "immediate_share": 0.8420833808619267,
+   "t1_total": 4.947843510834114,
+   "outside_total": 0
+  },
+  {
+   "shocks": {
+    "OUSG": 0.3
+   },
+   "scenario": "low",
+   "variant": "pro_rata",
+   "demand": {
+    "OUSG": 93.996
+   },
+   "total_demand": 93.996,
+   "own_liquidity_paid": {
+    "OUSG": 1.095
+   },
+   "outside_map": {},
+   "funds": {
+    "SWEEP": {
+     "request": 45.602999999999994,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 45.602999999999994,
+     "request_over_aum": 0.16038193711753534,
+     "by_origin": {
+      "OUSG": {
+       "request": 45.602999999999994,
+       "immediate": 0.0
+      }
+     }
+    },
+    "BUIDL": {
+     "request": 30.692999999999998,
+     "liquidity_available": 25.0,
+     "liquidity_used": 25.0,
+     "coverage": 0.81451796826638,
+     "residual_t1": 5.692999999999998,
+     "request_over_aum": 0.018562106523619164,
+     "by_origin": {
+      "OUSG": {
+       "request": 30.692999999999998,
+       "immediate": 25.0
+      }
+     }
+    },
+    "BENJI": {
+     "request": 9.513,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 9.513,
+     "request_over_aum": 0.007430347811823884,
+     "by_origin": {
+      "OUSG": {
+       "request": 9.513,
+       "immediate": 0.0
+      }
+     }
+    },
+    "FYOXX": {
+     "request": 7.092,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 7.092,
+     "request_over_aum": 0.3201805869074492,
+     "by_origin": {
+      "OUSG": {
+       "request": 7.092,
+       "immediate": 0.0
+      }
+     }
+    }
+   },
+   "immediate_total": 26.095,
+   "immediate_share": 0.2776181965190008,
+   "t1_total": 67.901,
+   "outside_total": 0
+  },
+  {
+   "shocks": {
+    "OUSG": 0.3
+   },
+   "scenario": "low",
+   "variant": "liquid_first",
+   "demand": {
+    "OUSG": 93.996
+   },
+   "total_demand": 93.996,
+   "own_liquidity_paid": {
+    "OUSG": 3.65
+   },
+   "outside_map": {},
+   "funds": {
+    "SWEEP": {
+     "request": 44.34880827978169,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 44.34880827978169,
+     "request_over_aum": 0.15597104972842968,
+     "by_origin": {
+      "OUSG": {
+       "request": 44.34880827978169,
+       "immediate": 0.0
+      }
+     }
+    },
+    "BUIDL": {
+     "request": 29.84886898956954,
+     "liquidity_available": 25.0,
+     "liquidity_used": 25.0,
+     "coverage": 0.8375526727239166,
+     "residual_t1": 4.848868989569539,
+     "request_over_aum": 0.018051604137553922,
+     "by_origin": {
+      "OUSG": {
+       "request": 29.84886898956954,
+       "immediate": 25.0
+      }
+     }
+    },
+    "BENJI": {
+     "request": 9.251369716149448,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 9.251369716149448,
+     "request_over_aum": 0.007225995451147355,
+     "by_origin": {
+      "OUSG": {
+       "request": 9.251369716149448,
+       "immediate": 0.0
+      }
+     }
+    },
+    "FYOXX": {
+     "request": 6.896953014499305,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 6.896953014499305,
+     "request_over_aum": 0.3113748539277339,
+     "by_origin": {
+      "OUSG": {
+       "request": 6.896953014499305,
+       "immediate": 0.0
+      }
+     }
+    }
+   },
+   "immediate_total": 28.65,
+   "immediate_share": 0.3048002042640112,
+   "t1_total": 65.34599999999999,
+   "outside_total": 0
+  },
+  {
+   "shocks": {
+    "OUSG": 0.3
+   },
+   "scenario": "base",
+   "variant": "pro_rata",
+   "demand": {
+    "OUSG": 93.996
+   },
+   "total_demand": 93.996,
+   "own_liquidity_paid": {
+    "OUSG": 1.095
+   },
+   "outside_map": {},
+   "funds": {
+    "SWEEP": {
+     "request": 45.602999999999994,
+     "liquidity_available": 28.43,
+     "liquidity_used": 28.43,
+     "coverage": 0.6234238975505998,
+     "residual_t1": 17.172999999999995,
+     "request_over_aum": 0.16038193711753534,
+     "by_origin": {
+      "OUSG": {
+       "request": 45.602999999999994,
+       "immediate": 28.43
+      }
+     }
+    },
+    "BUIDL": {
+     "request": 30.692999999999998,
+     "liquidity_available": 75.0,
+     "liquidity_used": 30.692999999999998,
+     "coverage": 1.0,
+     "residual_t1": 0.0,
+     "request_over_aum": 0.018562106523619164,
+     "by_origin": {
+      "OUSG": {
+       "request": 30.692999999999998,
+       "immediate": 30.692999999999998
+      }
+     }
+    },
+    "BENJI": {
+     "request": 9.513,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 9.513,
+     "request_over_aum": 0.007430347811823884,
+     "by_origin": {
+      "OUSG": {
+       "request": 9.513,
+       "immediate": 0.0
+      }
+     }
+    },
+    "FYOXX": {
+     "request": 7.092,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 7.092,
+     "request_over_aum": 0.3201805869074492,
+     "by_origin": {
+      "OUSG": {
+       "request": 7.092,
+       "immediate": 0.0
+      }
+     }
+    }
+   },
+   "immediate_total": 60.217999999999996,
+   "immediate_share": 0.6406442827354355,
+   "t1_total": 33.77799999999999,
+   "outside_total": 0
+  },
+  {
+   "shocks": {
+    "OUSG": 0.3
+   },
+   "scenario": "base",
+   "variant": "liquid_first",
+   "demand": {
+    "OUSG": 93.996
+   },
+   "total_demand": 93.996,
+   "own_liquidity_paid": {
+    "OUSG": 3.65
+   },
+   "outside_map": {},
+   "funds": {
+    "SWEEP": {
+     "request": 44.34880827978169,
+     "liquidity_available": 28.43,
+     "liquidity_used": 28.43,
+     "coverage": 0.641054429707439,
+     "residual_t1": 15.918808279781693,
+     "request_over_aum": 0.15597104972842968,
+     "by_origin": {
+      "OUSG": {
+       "request": 44.34880827978169,
+       "immediate": 28.43
+      }
+     }
+    },
+    "BUIDL": {
+     "request": 29.84886898956954,
+     "liquidity_available": 75.0,
+     "liquidity_used": 29.84886898956954,
+     "coverage": 1.0,
+     "residual_t1": 0.0,
+     "request_over_aum": 0.018051604137553922,
+     "by_origin": {
+      "OUSG": {
+       "request": 29.84886898956954,
+       "immediate": 29.848868989569535
+      }
+     }
+    },
+    "BENJI": {
+     "request": 9.251369716149448,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 9.251369716149448,
+     "request_over_aum": 0.007225995451147355,
+     "by_origin": {
+      "OUSG": {
+       "request": 9.251369716149448,
+       "immediate": 0.0
+      }
+     }
+    },
+    "FYOXX": {
+     "request": 6.896953014499305,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 6.896953014499305,
+     "request_over_aum": 0.3113748539277339,
+     "by_origin": {
+      "OUSG": {
+       "request": 6.896953014499305,
+       "immediate": 0.0
+      }
+     }
+    }
+   },
+   "immediate_total": 61.92886898956954,
+   "immediate_share": 0.6588457911993014,
+   "t1_total": 32.067131010430444,
+   "outside_total": 0
+  },
+  {
+   "shocks": {
+    "OUSG": 0.3
+   },
+   "scenario": "high",
+   "variant": "pro_rata",
+   "demand": {
+    "OUSG": 93.996
+   },
+   "total_demand": 93.996,
+   "own_liquidity_paid": {
+    "OUSG": 1.095
+   },
+   "outside_map": {},
+   "funds": {
+    "SWEEP": {
+     "request": 45.602999999999994,
+     "liquidity_available": 71.08,
+     "liquidity_used": 45.602999999999994,
+     "coverage": 1.0,
+     "residual_t1": 0.0,
+     "request_over_aum": 0.16038193711753534,
+     "by_origin": {
+      "OUSG": {
+       "request": 45.602999999999994,
+       "immediate": 45.602999999999994
+      }
+     }
+    },
+    "BUIDL": {
+     "request": 30.692999999999998,
+     "liquidity_available": 100.0,
+     "liquidity_used": 30.692999999999998,
+     "coverage": 1.0,
+     "residual_t1": 0.0,
+     "request_over_aum": 0.018562106523619164,
+     "by_origin": {
+      "OUSG": {
+       "request": 30.692999999999998,
+       "immediate": 30.692999999999998
+      }
+     }
+    },
+    "BENJI": {
+     "request": 9.513,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 9.513,
+     "request_over_aum": 0.007430347811823884,
+     "by_origin": {
+      "OUSG": {
+       "request": 9.513,
+       "immediate": 0.0
+      }
+     }
+    },
+    "FYOXX": {
+     "request": 7.092,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 7.092,
+     "request_over_aum": 0.3201805869074492,
+     "by_origin": {
+      "OUSG": {
+       "request": 7.092,
+       "immediate": 0.0
+      }
+     }
+    }
+   },
+   "immediate_total": 77.39099999999999,
+   "immediate_share": 0.823343546533895,
+   "t1_total": 16.605,
+   "outside_total": 0
+  },
+  {
+   "shocks": {
+    "OUSG": 0.3
+   },
+   "scenario": "high",
+   "variant": "liquid_first",
+   "demand": {
+    "OUSG": 93.996
+   },
+   "total_demand": 93.996,
+   "own_liquidity_paid": {
+    "OUSG": 3.65
+   },
+   "outside_map": {},
+   "funds": {
+    "SWEEP": {
+     "request": 44.34880827978169,
+     "liquidity_available": 71.08,
+     "liquidity_used": 44.34880827978169,
+     "coverage": 1.0,
+     "residual_t1": 0.0,
+     "request_over_aum": 0.15597104972842968,
+     "by_origin": {
+      "OUSG": {
+       "request": 44.34880827978169,
+       "immediate": 44.34880827978169
+      }
+     }
+    },
+    "BUIDL": {
+     "request": 29.84886898956954,
+     "liquidity_available": 100.0,
+     "liquidity_used": 29.84886898956954,
+     "coverage": 1.0,
+     "residual_t1": 0.0,
+     "request_over_aum": 0.018051604137553922,
+     "by_origin": {
+      "OUSG": {
+       "request": 29.84886898956954,
+       "immediate": 29.848868989569535
+      }
+     }
+    },
+    "BENJI": {
+     "request": 9.251369716149448,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 9.251369716149448,
+     "request_over_aum": 0.007225995451147355,
+     "by_origin": {
+      "OUSG": {
+       "request": 9.251369716149448,
+       "immediate": 0.0
+      }
+     }
+    },
+    "FYOXX": {
+     "request": 6.896953014499305,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 6.896953014499305,
+     "request_over_aum": 0.3113748539277339,
+     "by_origin": {
+      "OUSG": {
+       "request": 6.896953014499305,
+       "immediate": 0.0
+      }
+     }
+    }
+   },
+   "immediate_total": 77.84767726935124,
+   "immediate_share": 0.8282020221004217,
+   "t1_total": 16.14832273064875,
+   "outside_total": 0
+  },
+  {
+   "shocks": {
+    "OUSG": 0.5
+   },
+   "scenario": "low",
+   "variant": "pro_rata",
+   "demand": {
+    "OUSG": 156.66
+   },
+   "total_demand": 156.66,
+   "own_liquidity_paid": {
+    "OUSG": 1.825
+   },
+   "outside_map": {},
+   "funds": {
+    "SWEEP": {
+     "request": 76.005,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 76.005,
+     "request_over_aum": 0.26730322852922556,
+     "by_origin": {
+      "OUSG": {
+       "request": 76.005,
+       "immediate": 0.0
+      }
+     }
+    },
+    "BUIDL": {
+     "request": 51.155,
+     "liquidity_available": 25.0,
+     "liquidity_used": 25.0,
+     "coverage": 0.48871078095982795,
+     "residual_t1": 26.155,
+     "request_over_aum": 0.030936844206031947,
+     "by_origin": {
+      "OUSG": {
+       "request": 51.155,
+       "immediate": 25.0
+      }
+     }
+    },
+    "BENJI": {
+     "request": 15.855,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 15.855,
+     "request_over_aum": 0.012383913019706474,
+     "by_origin": {
+      "OUSG": {
+       "request": 15.855,
+       "immediate": 0.0
+      }
+     }
+    },
+    "FYOXX": {
+     "request": 11.82,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 11.82,
+     "request_over_aum": 0.5336343115124154,
+     "by_origin": {
+      "OUSG": {
+       "request": 11.82,
+       "immediate": 0.0
+      }
+     }
+    }
+   },
+   "immediate_total": 26.825,
+   "immediate_share": 0.17123069066768798,
+   "t1_total": 129.835,
+   "outside_total": 0
+  },
+  {
+   "shocks": {
+    "OUSG": 0.5
+   },
+   "scenario": "low",
+   "variant": "liquid_first",
+   "demand": {
+    "OUSG": 156.66
+   },
+   "total_demand": 156.66,
+   "own_liquidity_paid": {
+    "OUSG": 3.65
+   },
+   "outside_map": {},
+   "funds": {
+    "SWEEP": {
+     "request": 75.10914877127263,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 75.10914877127263,
+     "request_over_aum": 0.26415259467986435,
+     "by_origin": {
+      "OUSG": {
+       "request": 75.10914877127263,
+       "immediate": 0.0
+      }
+     }
+    },
+    "BUIDL": {
+     "request": 50.55204927826395,
+     "liquidity_available": 25.0,
+     "liquidity_used": 25.0,
+     "coverage": 0.4945397932809292,
+     "residual_t1": 25.55204927826395,
+     "request_over_aum": 0.030572199644556767,
+     "by_origin": {
+      "OUSG": {
+       "request": 50.55204927826395,
+       "immediate": 25.0
+      }
+     }
+    },
+    "BENJI": {
+     "request": 15.668121225821034,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 15.668121225821034,
+     "request_over_aum": 0.012237947047794667,
+     "by_origin": {
+      "OUSG": {
+       "request": 15.668121225821034,
+       "immediate": 0.0
+      }
+     }
+    },
+    "FYOXX": {
+     "request": 11.68068072464236,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 11.68068072464236,
+     "request_over_aum": 0.5273445022411901,
+     "by_origin": {
+      "OUSG": {
+       "request": 11.68068072464236,
+       "immediate": 0.0
+      }
+     }
+    }
+   },
+   "immediate_total": 28.65,
+   "immediate_share": 0.18288012255840674,
+   "t1_total": 128.00999999999996,
+   "outside_total": 0
+  },
+  {
+   "shocks": {
+    "OUSG": 0.5
+   },
+   "scenario": "base",
+   "variant": "pro_rata",
+   "demand": {
+    "OUSG": 156.66
+   },
+   "total_demand": 156.66,
+   "own_liquidity_paid": {
+    "OUSG": 1.825
+   },
+   "outside_map": {},
+   "funds": {
+    "SWEEP": {
+     "request": 76.005,
+     "liquidity_available": 28.43,
+     "liquidity_used": 28.43,
+     "coverage": 0.37405433853035985,
+     "residual_t1": 47.574999999999996,
+     "request_over_aum": 0.26730322852922556,
+     "by_origin": {
+      "OUSG": {
+       "request": 76.005,
+       "immediate": 28.43
+      }
+     }
+    },
+    "BUIDL": {
+     "request": 51.155,
+     "liquidity_available": 75.0,
+     "liquidity_used": 51.155,
+     "coverage": 1.0,
+     "residual_t1": 0.0,
+     "request_over_aum": 0.030936844206031947,
+     "by_origin": {
+      "OUSG": {
+       "request": 51.155,
+       "immediate": 51.155
+      }
+     }
+    },
+    "BENJI": {
+     "request": 15.855,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 15.855,
+     "request_over_aum": 0.012383913019706474,
+     "by_origin": {
+      "OUSG": {
+       "request": 15.855,
+       "immediate": 0.0
+      }
+     }
+    },
+    "FYOXX": {
+     "request": 11.82,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 11.82,
+     "request_over_aum": 0.5336343115124154,
+     "by_origin": {
+      "OUSG": {
+       "request": 11.82,
+       "immediate": 0.0
+      }
+     }
+    }
+   },
+   "immediate_total": 81.41000000000001,
+   "immediate_share": 0.5196604110813227,
+   "t1_total": 75.25,
+   "outside_total": 0
+  },
+  {
+   "shocks": {
+    "OUSG": 0.5
+   },
+   "scenario": "base",
+   "variant": "liquid_first",
+   "demand": {
+    "OUSG": 156.66
+   },
+   "total_demand": 156.66,
+   "own_liquidity_paid": {
+    "OUSG": 3.65
+   },
+   "outside_map": {},
+   "funds": {
+    "SWEEP": {
+     "request": 75.10914877127263,
+     "liquidity_available": 28.43,
+     "liquidity_used": 28.43,
+     "coverage": 0.37851580619794967,
+     "residual_t1": 46.67914877127263,
+     "request_over_aum": 0.26415259467986435,
+     "by_origin": {
+      "OUSG": {
+       "request": 75.10914877127263,
+       "immediate": 28.43
+      }
+     }
+    },
+    "BUIDL": {
+     "request": 50.55204927826395,
+     "liquidity_available": 75.0,
+     "liquidity_used": 50.55204927826395,
+     "coverage": 1.0,
+     "residual_t1": 0.0,
+     "request_over_aum": 0.030572199644556767,
+     "by_origin": {
+      "OUSG": {
+       "request": 50.55204927826395,
+       "immediate": 50.55204927826395
+      }
+     }
+    },
+    "BENJI": {
+     "request": 15.668121225821034,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 15.668121225821034,
+     "request_over_aum": 0.012237947047794667,
+     "by_origin": {
+      "OUSG": {
+       "request": 15.668121225821034,
+       "immediate": 0.0
+      }
+     }
+    },
+    "FYOXX": {
+     "request": 11.68068072464236,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 11.68068072464236,
+     "request_over_aum": 0.5273445022411901,
+     "by_origin": {
+      "OUSG": {
+       "request": 11.68068072464236,
+       "immediate": 0.0
+      }
+     }
+    }
+   },
+   "immediate_total": 82.63204927826396,
+   "immediate_share": 0.5274610575658366,
+   "t1_total": 74.02795072173602,
+   "outside_total": 0
+  },
+  {
+   "shocks": {
+    "OUSG": 0.5
+   },
+   "scenario": "high",
+   "variant": "pro_rata",
+   "demand": {
+    "OUSG": 156.66
+   },
+   "total_demand": 156.66,
+   "own_liquidity_paid": {
+    "OUSG": 1.825
+   },
+   "outside_map": {},
+   "funds": {
+    "SWEEP": {
+     "request": 76.005,
+     "liquidity_available": 71.08,
+     "liquidity_used": 71.08,
+     "coverage": 0.9352016314716137,
+     "residual_t1": 4.924999999999997,
+     "request_over_aum": 0.26730322852922556,
+     "by_origin": {
+      "OUSG": {
+       "request": 76.005,
+       "immediate": 71.08
+      }
+     }
+    },
+    "BUIDL": {
+     "request": 51.155,
+     "liquidity_available": 100.0,
+     "liquidity_used": 51.155,
+     "coverage": 1.0,
+     "residual_t1": 0.0,
+     "request_over_aum": 0.030936844206031947,
+     "by_origin": {
+      "OUSG": {
+       "request": 51.155,
+       "immediate": 51.155
+      }
+     }
+    },
+    "BENJI": {
+     "request": 15.855,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 15.855,
+     "request_over_aum": 0.012383913019706474,
+     "by_origin": {
+      "OUSG": {
+       "request": 15.855,
+       "immediate": 0.0
+      }
+     }
+    },
+    "FYOXX": {
+     "request": 11.82,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 11.82,
+     "request_over_aum": 0.5336343115124154,
+     "by_origin": {
+      "OUSG": {
+       "request": 11.82,
+       "immediate": 0.0
+      }
+     }
+    }
+   },
+   "immediate_total": 124.06,
+   "immediate_share": 0.7919060385548321,
+   "t1_total": 32.599999999999994,
+   "outside_total": 0
+  },
+  {
+   "shocks": {
+    "OUSG": 0.5
+   },
+   "scenario": "high",
+   "variant": "liquid_first",
+   "demand": {
+    "OUSG": 156.66
+   },
+   "total_demand": 156.66,
+   "own_liquidity_paid": {
+    "OUSG": 3.65
+   },
+   "outside_map": {},
+   "funds": {
+    "SWEEP": {
+     "request": 75.10914877127263,
+     "liquidity_available": 71.08,
+     "liquidity_used": 71.08,
+     "coverage": 0.9463560852814021,
+     "residual_t1": 4.029148771272631,
+     "request_over_aum": 0.26415259467986435,
+     "by_origin": {
+      "OUSG": {
+       "request": 75.10914877127263,
+       "immediate": 71.08
+      }
+     }
+    },
+    "BUIDL": {
+     "request": 50.55204927826395,
+     "liquidity_available": 100.0,
+     "liquidity_used": 50.55204927826395,
+     "coverage": 1.0,
+     "residual_t1": 0.0,
+     "request_over_aum": 0.030572199644556767,
+     "by_origin": {
+      "OUSG": {
+       "request": 50.55204927826395,
+       "immediate": 50.55204927826395
+      }
+     }
+    },
+    "BENJI": {
+     "request": 15.668121225821034,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 15.668121225821034,
+     "request_over_aum": 0.012237947047794667,
+     "by_origin": {
+      "OUSG": {
+       "request": 15.668121225821034,
+       "immediate": 0.0
+      }
+     }
+    },
+    "FYOXX": {
+     "request": 11.68068072464236,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 11.68068072464236,
+     "request_over_aum": 0.5273445022411901,
+     "by_origin": {
+      "OUSG": {
+       "request": 11.68068072464236,
+       "immediate": 0.0
+      }
+     }
+    }
+   },
+   "immediate_total": 125.28204927826395,
+   "immediate_share": 0.799706685039346,
+   "t1_total": 31.377950721736024,
+   "outside_total": 0
+  },
+  {
+   "shocks": {
+    "USDGO": 0.1
+   },
+   "scenario": "low",
+   "variant": "pro_rata",
+   "demand": {
+    "USDGO": 103.203
+   },
+   "total_demand": 103.203,
+   "own_liquidity_paid": {
+    "USDGO": 0.0
+   },
+   "outside_map": {
+    "USDGO": 10.017000000000001
+   },
+   "funds": {
+    "BUIDL": {
+     "request": 19.597,
+     "liquidity_available": 25.0,
+     "liquidity_used": 19.597,
+     "coverage": 1.0,
+     "residual_t1": 0.0,
+     "request_over_aum": 0.01185161442489704,
+     "by_origin": {
+      "USDGO": {
+       "request": 19.597,
+       "immediate": 19.597
+      }
+     }
+    },
+    "JLTXX": {
+     "request": 73.589,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 73.589,
+     "request_over_aum": 0.09580528830506047,
+     "by_origin": {
+      "USDGO": {
+       "request": 73.589,
+       "immediate": 0.0
+      }
+     }
+    }
+   },
+   "immediate_total": 19.597,
+   "immediate_share": 0.18988789085588598,
+   "t1_total": 73.589,
+   "outside_total": 10.017000000000001
+  },
+  {
+   "shocks": {
+    "USDGO": 0.1
+   },
+   "scenario": "low",
+   "variant": "liquid_first",
+   "demand": {
+    "USDGO": 103.203
+   },
+   "total_demand": 103.203,
+   "own_liquidity_paid": {
+    "USDGO": 0.0
+   },
+   "outside_map": {
+    "USDGO": 10.017000000000001
+   },
+   "funds": {
+    "BUIDL": {
+     "request": 19.597,
+     "liquidity_available": 25.0,
+     "liquidity_used": 19.597,
+     "coverage": 1.0,
+     "residual_t1": 0.0,
+     "request_over_aum": 0.01185161442489704,
+     "by_origin": {
+      "USDGO": {
+       "request": 19.597,
+       "immediate": 19.597
+      }
+     }
+    },
+    "JLTXX": {
+     "request": 73.589,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 73.589,
+     "request_over_aum": 0.09580528830506047,
+     "by_origin": {
+      "USDGO": {
+       "request": 73.589,
+       "immediate": 0.0
+      }
+     }
+    }
+   },
+   "immediate_total": 19.597,
+   "immediate_share": 0.18988789085588598,
+   "t1_total": 73.589,
+   "outside_total": 10.017000000000001
+  },
+  {
+   "shocks": {
+    "USDGO": 0.1
+   },
+   "scenario": "base",
+   "variant": "pro_rata",
+   "demand": {
+    "USDGO": 108.233
+   },
+   "total_demand": 108.233,
+   "own_liquidity_paid": {
+    "USDGO": 5.03
+   },
+   "outside_map": {
+    "USDGO": 10.017000000000001
+   },
+   "funds": {
+    "BUIDL": {
+     "request": 19.597,
+     "liquidity_available": 75.0,
+     "liquidity_used": 19.597,
+     "coverage": 1.0,
+     "residual_t1": 0.0,
+     "request_over_aum": 0.01185161442489704,
+     "by_origin": {
+      "USDGO": {
+       "request": 19.597,
+       "immediate": 19.597
+      }
+     }
+    },
+    "JLTXX": {
+     "request": 73.589,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 73.589,
+     "request_over_aum": 0.09580528830506047,
+     "by_origin": {
+      "USDGO": {
+       "request": 73.589,
+       "immediate": 0.0
+      }
+     }
+    }
+   },
+   "immediate_total": 24.627000000000002,
+   "immediate_share": 0.2275368880101263,
+   "t1_total": 73.589,
+   "outside_total": 10.017000000000001
+  },
+  {
+   "shocks": {
+    "USDGO": 0.1
+   },
+   "scenario": "base",
+   "variant": "liquid_first",
+   "demand": {
+    "USDGO": 108.233
+   },
+   "total_demand": 108.233,
+   "own_liquidity_paid": {
+    "USDGO": 50.3
+   },
+   "outside_map": {
+    "USDGO": 5.6230425569024165
+   },
+   "funds": {
+    "BUIDL": {
+     "request": 11.000775180954044,
+     "liquidity_available": 75.0,
+     "liquidity_used": 11.000775180954044,
+     "coverage": 1.0,
+     "residual_t1": 0.0,
+     "request_over_aum": 0.0066529032923225125,
+     "by_origin": {
+      "USDGO": {
+       "request": 11.000775180954044,
+       "immediate": 11.000775180954044
+      }
+     }
+    },
+    "JLTXX": {
+     "request": 41.30918226214355,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 41.30918226214355,
+     "request_over_aum": 0.053780294830354444,
+     "by_origin": {
+      "USDGO": {
+       "request": 41.30918226214355,
+       "immediate": 0.0
+      }
+     }
+    }
+   },
+   "immediate_total": 61.30077518095404,
+   "immediate_share": 0.5663778623982892,
+   "t1_total": 41.30918226214355,
+   "outside_total": 5.6230425569024165
+  },
+  {
+   "shocks": {
+    "USDGO": 0.1
+   },
+   "scenario": "high",
+   "variant": "pro_rata",
+   "demand": {
+    "USDGO": 108.233
+   },
+   "total_demand": 108.233,
+   "own_liquidity_paid": {
+    "USDGO": 5.03
+   },
+   "outside_map": {
+    "USDGO": 10.017000000000001
+   },
+   "funds": {
+    "BUIDL": {
+     "request": 19.597,
+     "liquidity_available": 100.0,
+     "liquidity_used": 19.597,
+     "coverage": 1.0,
+     "residual_t1": 0.0,
+     "request_over_aum": 0.01185161442489704,
+     "by_origin": {
+      "USDGO": {
+       "request": 19.597,
+       "immediate": 19.597
+      }
+     }
+    },
+    "JLTXX": {
+     "request": 73.589,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 73.589,
+     "request_over_aum": 0.09580528830506047,
+     "by_origin": {
+      "USDGO": {
+       "request": 73.589,
+       "immediate": 0.0
+      }
+     }
+    }
+   },
+   "immediate_total": 24.627000000000002,
+   "immediate_share": 0.2275368880101263,
+   "t1_total": 73.589,
+   "outside_total": 10.017000000000001
+  },
+  {
+   "shocks": {
+    "USDGO": 0.1
+   },
+   "scenario": "high",
+   "variant": "liquid_first",
+   "demand": {
+    "USDGO": 108.233
+   },
+   "total_demand": 108.233,
+   "own_liquidity_paid": {
+    "USDGO": 50.3
+   },
+   "outside_map": {
+    "USDGO": 5.6230425569024165
+   },
+   "funds": {
+    "BUIDL": {
+     "request": 11.000775180954044,
+     "liquidity_available": 100.0,
+     "liquidity_used": 11.000775180954044,
+     "coverage": 1.0,
+     "residual_t1": 0.0,
+     "request_over_aum": 0.0066529032923225125,
+     "by_origin": {
+      "USDGO": {
+       "request": 11.000775180954044,
+       "immediate": 11.000775180954044
+      }
+     }
+    },
+    "JLTXX": {
+     "request": 41.30918226214355,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 41.30918226214355,
+     "request_over_aum": 0.053780294830354444,
+     "by_origin": {
+      "USDGO": {
+       "request": 41.30918226214355,
+       "immediate": 0.0
+      }
+     }
+    }
+   },
+   "immediate_total": 61.30077518095404,
+   "immediate_share": 0.5663778623982892,
+   "t1_total": 41.30918226214355,
+   "outside_total": 5.6230425569024165
+  },
+  {
+   "shocks": {
+    "USDGO": 0.3
+   },
+   "scenario": "low",
+   "variant": "pro_rata",
+   "demand": {
+    "USDGO": 309.609
+   },
+   "total_demand": 309.609,
+   "own_liquidity_paid": {
+    "USDGO": 0.0
+   },
+   "outside_map": {
+    "USDGO": 30.051
+   },
+   "funds": {
+    "BUIDL": {
+     "request": 58.791,
+     "liquidity_available": 25.0,
+     "liquidity_used": 25.0,
+     "coverage": 0.42523515504073756,
+     "residual_t1": 33.791,
+     "request_over_aum": 0.03555484327469111,
+     "by_origin": {
+      "USDGO": {
+       "request": 58.791,
+       "immediate": 25.0
+      }
+     }
+    },
+    "JLTXX": {
+     "request": 220.767,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 220.767,
+     "request_over_aum": 0.2874158649151814,
+     "by_origin": {
+      "USDGO": {
+       "request": 220.767,
+       "immediate": 0.0
+      }
+     }
+    }
+   },
+   "immediate_total": 25.0,
+   "immediate_share": 0.08074700670846133,
+   "t1_total": 254.558,
+   "outside_total": 30.051
+  },
+  {
+   "shocks": {
+    "USDGO": 0.3
+   },
+   "scenario": "low",
+   "variant": "liquid_first",
+   "demand": {
+    "USDGO": 309.609
+   },
+   "total_demand": 309.609,
+   "own_liquidity_paid": {
+    "USDGO": 0.0
+   },
+   "outside_map": {
+    "USDGO": 30.051
+   },
+   "funds": {
+    "BUIDL": {
+     "request": 58.791,
+     "liquidity_available": 25.0,
+     "liquidity_used": 25.0,
+     "coverage": 0.42523515504073756,
+     "residual_t1": 33.791,
+     "request_over_aum": 0.03555484327469111,
+     "by_origin": {
+      "USDGO": {
+       "request": 58.791,
+       "immediate": 25.0
+      }
+     }
+    },
+    "JLTXX": {
+     "request": 220.767,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 220.767,
+     "request_over_aum": 0.2874158649151814,
+     "by_origin": {
+      "USDGO": {
+       "request": 220.767,
+       "immediate": 0.0
+      }
+     }
+    }
+   },
+   "immediate_total": 25.0,
+   "immediate_share": 0.08074700670846133,
+   "t1_total": 254.558,
+   "outside_total": 30.051
+  },
+  {
+   "shocks": {
+    "USDGO": 0.3
+   },
+   "scenario": "base",
+   "variant": "pro_rata",
+   "demand": {
+    "USDGO": 324.69899999999996
+   },
+   "total_demand": 324.69899999999996,
+   "own_liquidity_paid": {
+    "USDGO": 15.089999999999998
+   },
+   "outside_map": {
+    "USDGO": 30.051
+   },
+   "funds": {
+    "BUIDL": {
+     "request": 58.791,
+     "liquidity_available": 75.0,
+     "liquidity_used": 58.791,
+     "coverage": 1.0,
+     "residual_t1": 0.0,
+     "request_over_aum": 0.03555484327469111,
+     "by_origin": {
+      "USDGO": {
+       "request": 58.791,
+       "immediate": 58.791000000000004
+      }
+     }
+    },
+    "JLTXX": {
+     "request": 220.767,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 220.767,
+     "request_over_aum": 0.2874158649151814,
+     "by_origin": {
+      "USDGO": {
+       "request": 220.767,
+       "immediate": 0.0
+      }
+     }
+    }
+   },
+   "immediate_total": 73.881,
+   "immediate_share": 0.22753688801012634,
+   "t1_total": 220.767,
+   "outside_total": 30.051
+  },
+  {
+   "shocks": {
+    "USDGO": 0.3
+   },
+   "scenario": "base",
+   "variant": "liquid_first",
+   "demand": {
+    "USDGO": 324.69899999999996
+   },
+   "total_demand": 324.69899999999996,
+   "own_liquidity_paid": {
+    "USDGO": 50.3
+   },
+   "outside_map": {
+    "USDGO": 26.63347754425743
+   },
+   "funds": {
+    "BUIDL": {
+     "request": 52.10504736296425,
+     "liquidity_available": 75.0,
+     "liquidity_used": 52.10504736296425,
+     "coverage": 1.0,
+     "residual_t1": 0.0,
+     "request_over_aum": 0.0315114012826887,
+     "by_origin": {
+      "USDGO": {
+       "request": 52.10504736296425,
+       "immediate": 52.10504736296425
+      }
+     }
+    },
+    "JLTXX": {
+     "request": 195.66047509277828,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 195.66047509277828,
+     "request_over_aum": 0.2547297588792989,
+     "by_origin": {
+      "USDGO": {
+       "request": 195.66047509277828,
+       "immediate": 0.0
+      }
+     }
+    }
+   },
+   "immediate_total": 102.40504736296424,
+   "immediate_share": 0.3153845480366871,
+   "t1_total": 195.66047509277828,
+   "outside_total": 26.63347754425743
+  },
+  {
+   "shocks": {
+    "USDGO": 0.3
+   },
+   "scenario": "high",
+   "variant": "pro_rata",
+   "demand": {
+    "USDGO": 324.69899999999996
+   },
+   "total_demand": 324.69899999999996,
+   "own_liquidity_paid": {
+    "USDGO": 15.089999999999998
+   },
+   "outside_map": {
+    "USDGO": 30.051
+   },
+   "funds": {
+    "BUIDL": {
+     "request": 58.791,
+     "liquidity_available": 100.0,
+     "liquidity_used": 58.791,
+     "coverage": 1.0,
+     "residual_t1": 0.0,
+     "request_over_aum": 0.03555484327469111,
+     "by_origin": {
+      "USDGO": {
+       "request": 58.791,
+       "immediate": 58.791000000000004
+      }
+     }
+    },
+    "JLTXX": {
+     "request": 220.767,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 220.767,
+     "request_over_aum": 0.2874158649151814,
+     "by_origin": {
+      "USDGO": {
+       "request": 220.767,
+       "immediate": 0.0
+      }
+     }
+    }
+   },
+   "immediate_total": 73.881,
+   "immediate_share": 0.22753688801012634,
+   "t1_total": 220.767,
+   "outside_total": 30.051
+  },
+  {
+   "shocks": {
+    "USDGO": 0.3
+   },
+   "scenario": "high",
+   "variant": "liquid_first",
+   "demand": {
+    "USDGO": 324.69899999999996
+   },
+   "total_demand": 324.69899999999996,
+   "own_liquidity_paid": {
+    "USDGO": 50.3
+   },
+   "outside_map": {
+    "USDGO": 26.63347754425743
+   },
+   "funds": {
+    "BUIDL": {
+     "request": 52.10504736296425,
+     "liquidity_available": 100.0,
+     "liquidity_used": 52.10504736296425,
+     "coverage": 1.0,
+     "residual_t1": 0.0,
+     "request_over_aum": 0.0315114012826887,
+     "by_origin": {
+      "USDGO": {
+       "request": 52.10504736296425,
+       "immediate": 52.10504736296425
+      }
+     }
+    },
+    "JLTXX": {
+     "request": 195.66047509277828,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 195.66047509277828,
+     "request_over_aum": 0.2547297588792989,
+     "by_origin": {
+      "USDGO": {
+       "request": 195.66047509277828,
+       "immediate": 0.0
+      }
+     }
+    }
+   },
+   "immediate_total": 102.40504736296424,
+   "immediate_share": 0.3153845480366871,
+   "t1_total": 195.66047509277828,
+   "outside_total": 26.63347754425743
+  },
+  {
+   "shocks": {
+    "USDGO": 0.5
+   },
+   "scenario": "low",
+   "variant": "pro_rata",
+   "demand": {
+    "USDGO": 516.015
+   },
+   "total_demand": 516.015,
+   "own_liquidity_paid": {
+    "USDGO": 0.0
+   },
+   "outside_map": {
+    "USDGO": 50.085
+   },
+   "funds": {
+    "BUIDL": {
+     "request": 97.985,
+     "liquidity_available": 25.0,
+     "liquidity_used": 25.0,
+     "coverage": 0.25514109302444254,
+     "residual_t1": 72.985,
+     "request_over_aum": 0.059258072124485195,
+     "by_origin": {
+      "USDGO": {
+       "request": 97.985,
+       "immediate": 25.0
+      }
+     }
+    },
+    "JLTXX": {
+     "request": 367.945,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 367.945,
+     "request_over_aum": 0.4790264415253023,
+     "by_origin": {
+      "USDGO": {
+       "request": 367.945,
+       "immediate": 0.0
+      }
+     }
+    }
+   },
+   "immediate_total": 25.0,
+   "immediate_share": 0.04844820402507679,
+   "t1_total": 440.93,
+   "outside_total": 50.085
+  },
+  {
+   "shocks": {
+    "USDGO": 0.5
+   },
+   "scenario": "low",
+   "variant": "liquid_first",
+   "demand": {
+    "USDGO": 516.015
+   },
+   "total_demand": 516.015,
+   "own_liquidity_paid": {
+    "USDGO": 0.0
+   },
+   "outside_map": {
+    "USDGO": 50.085
+   },
+   "funds": {
+    "BUIDL": {
+     "request": 97.985,
+     "liquidity_available": 25.0,
+     "liquidity_used": 25.0,
+     "coverage": 0.25514109302444254,
+     "residual_t1": 72.985,
+     "request_over_aum": 0.059258072124485195,
+     "by_origin": {
+      "USDGO": {
+       "request": 97.985,
+       "immediate": 25.0
+      }
+     }
+    },
+    "JLTXX": {
+     "request": 367.945,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 367.945,
+     "request_over_aum": 0.4790264415253023,
+     "by_origin": {
+      "USDGO": {
+       "request": 367.945,
+       "immediate": 0.0
+      }
+     }
+    }
+   },
+   "immediate_total": 25.0,
+   "immediate_share": 0.04844820402507679,
+   "t1_total": 440.93,
+   "outside_total": 50.085
+  },
+  {
+   "shocks": {
+    "USDGO": 0.5
+   },
+   "scenario": "base",
+   "variant": "pro_rata",
+   "demand": {
+    "USDGO": 541.165
+   },
+   "total_demand": 541.165,
+   "own_liquidity_paid": {
+    "USDGO": 25.15
+   },
+   "outside_map": {
+    "USDGO": 50.085
+   },
+   "funds": {
+    "BUIDL": {
+     "request": 97.985,
+     "liquidity_available": 75.0,
+     "liquidity_used": 75.0,
+     "coverage": 0.7654232790733275,
+     "residual_t1": 22.985,
+     "request_over_aum": 0.059258072124485195,
+     "by_origin": {
+      "USDGO": {
+       "request": 97.985,
+       "immediate": 75.0
+      }
+     }
+    },
+    "JLTXX": {
+     "request": 367.945,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 367.945,
+     "request_over_aum": 0.4790264415253023,
+     "by_origin": {
+      "USDGO": {
+       "request": 367.945,
+       "immediate": 0.0
+      }
+     }
+    }
+   },
+   "immediate_total": 100.15,
+   "immediate_share": 0.18506370515462015,
+   "t1_total": 390.93,
+   "outside_total": 50.085
+  },
+  {
+   "shocks": {
+    "USDGO": 0.5
+   },
+   "scenario": "base",
+   "variant": "liquid_first",
+   "demand": {
+    "USDGO": 541.165
+   },
+   "total_demand": 541.165,
+   "own_liquidity_paid": {
+    "USDGO": 50.3
+   },
+   "outside_map": {
+    "USDGO": 47.64391253161245
+   },
+   "funds": {
+    "BUIDL": {
+     "request": 93.20931954497446,
+     "liquidity_available": 75.0,
+     "liquidity_used": 75.0,
+     "coverage": 0.804640569914382,
+     "residual_t1": 18.209319544974463,
+     "request_over_aum": 0.0563698992730549,
+     "by_origin": {
+      "USDGO": {
+       "request": 93.20931954497446,
+       "immediate": 75.0
+      }
+     }
+    },
+    "JLTXX": {
+     "request": 350.01176792341306,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 350.01176792341306,
+     "request_over_aum": 0.4556792229282434,
+     "by_origin": {
+      "USDGO": {
+       "request": 350.01176792341306,
+       "immediate": 0.0
+      }
+     }
+    }
+   },
+   "immediate_total": 125.3,
+   "immediate_share": 0.23153751628431254,
+   "t1_total": 368.2210874683875,
+   "outside_total": 47.64391253161245
+  },
+  {
+   "shocks": {
+    "USDGO": 0.5
+   },
+   "scenario": "high",
+   "variant": "pro_rata",
+   "demand": {
+    "USDGO": 541.165
+   },
+   "total_demand": 541.165,
+   "own_liquidity_paid": {
+    "USDGO": 25.15
+   },
+   "outside_map": {
+    "USDGO": 50.085
+   },
+   "funds": {
+    "BUIDL": {
+     "request": 97.985,
+     "liquidity_available": 100.0,
+     "liquidity_used": 97.985,
+     "coverage": 1.0,
+     "residual_t1": 0.0,
+     "request_over_aum": 0.059258072124485195,
+     "by_origin": {
+      "USDGO": {
+       "request": 97.985,
+       "immediate": 97.985
+      }
+     }
+    },
+    "JLTXX": {
+     "request": 367.945,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 367.945,
+     "request_over_aum": 0.4790264415253023,
+     "by_origin": {
+      "USDGO": {
+       "request": 367.945,
+       "immediate": 0.0
+      }
+     }
+    }
+   },
+   "immediate_total": 123.13499999999999,
+   "immediate_share": 0.2275368880101263,
+   "t1_total": 367.945,
+   "outside_total": 50.085
+  },
+  {
+   "shocks": {
+    "USDGO": 0.5
+   },
+   "scenario": "high",
+   "variant": "liquid_first",
+   "demand": {
+    "USDGO": 541.165
+   },
+   "total_demand": 541.165,
+   "own_liquidity_paid": {
+    "USDGO": 50.3
+   },
+   "outside_map": {
+    "USDGO": 47.64391253161245
+   },
+   "funds": {
+    "BUIDL": {
+     "request": 93.20931954497446,
+     "liquidity_available": 100.0,
+     "liquidity_used": 93.20931954497446,
+     "coverage": 1.0,
+     "residual_t1": 0.0,
+     "request_over_aum": 0.0563698992730549,
+     "by_origin": {
+      "USDGO": {
+       "request": 93.20931954497446,
+       "immediate": 93.20931954497446
+      }
+     }
+    },
+    "JLTXX": {
+     "request": 350.01176792341306,
+     "liquidity_available": 0.0,
+     "liquidity_used": 0.0,
+     "coverage": 0.0,
+     "residual_t1": 350.01176792341306,
+     "request_over_aum": 0.4556792229282434,
+     "by_origin": {
+      "USDGO": {
+       "request": 350.01176792341306,
+       "immediate": 0.0
+      }
+     }
+    }
+   },
+   "immediate_total": 143.50931954497446,
+   "immediate_share": 0.26518588516436664,
+   "t1_total": 350.01176792341306,
+   "outside_total": 47.64391253161245
+  },
+  {
+   "shocks": {
+    "USDtb": 0.1
+   },
+   "scenario": "low",
+   "variant": "pro_rata",
+   "demand": {
+    "USDtb": 34.572
+   },
+   "total_demand": 34.572,
+   "own_liquidity_paid": {
+    "USDtb": 0.0
+   },
+   "outside_map": {},
+   "funds": {
+    "BUIDL": {
+     "request": 34.572,
+     "liquidity_available": 25.0,
+     "liquidity_used": 25.0,
+     "coverage": 0.7231285433298622,
+     "residual_t1": 9.572000000000003,
+     "request_over_aum": 0.020907996831022117,
+     "by_origin": {
+      "USDtb": {
+       "request": 34.572,
+       "immediate": 25.0
+      }
+     }
+    }
+   },
+   "immediate_total": 25.0,
+   "immediate_share": 0.7231285433298622,
+   "t1_total": 9.572000000000003,
+   "outside_total": 0
+  },
+  {
+   "shocks": {
+    "USDtb": 0.1
+   },
+   "scenario": "low",
+   "variant": "liquid_first",
+   "demand": {
+    "USDtb": 34.572
+   },
+   "total_demand": 34.572,
+   "own_liquidity_paid": {
+    "USDtb": 0.0
+   },
+   "outside_map": {},
+   "funds": {
+    "BUIDL": {
+     "request": 34.572,
+     "liquidity_available": 25.0,
+     "liquidity_used": 25.0,
+     "coverage": 0.7231285433298622,
+     "residual_t1": 9.572000000000003,
+     "request_over_aum": 0.020907996831022117,
+     "by_origin": {
+      "USDtb": {
+       "request": 34.572,
+       "immediate": 25.0
+      }
+     }
+    }
+   },
+   "immediate_total": 25.0,
+   "immediate_share": 0.7231285433298622,
+   "t1_total": 9.572000000000003,
+   "outside_total": 0
+  },
+  {
+   "shocks": {
+    "USDtb": 0.1
+   },
+   "scenario": "base",
+   "variant": "pro_rata",
+   "demand": {
+    "USDtb": 34.941
+   },
+   "total_demand": 34.941,
+   "own_liquidity_paid": {
+    "USDtb": 0.369
+   },
+   "outside_map": {},
+   "funds": {
+    "BUIDL": {
+     "request": 34.572,
+     "liquidity_available": 75.0,
+     "liquidity_used": 34.572,
+     "coverage": 1.0,
+     "residual_t1": 0.0,
+     "request_over_aum": 0.020907996831022117,
+     "by_origin": {
+      "USDtb": {
+       "request": 34.572,
+       "immediate": 34.572
+      }
+     }
+    }
+   },
+   "immediate_total": 34.941,
+   "immediate_share": 1.0,
+   "t1_total": 0.0,
+   "outside_total": 0
+  },
+  {
+   "shocks": {
+    "USDtb": 0.1
+   },
+   "scenario": "base",
+   "variant": "liquid_first",
+   "demand": {
+    "USDtb": 34.941
+   },
+   "total_demand": 34.941,
+   "own_liquidity_paid": {
+    "USDtb": 3.69
+   },
+   "outside_map": {},
+   "funds": {
+    "BUIDL": {
+     "request": 31.251,
+     "liquidity_available": 75.0,
+     "liquidity_used": 31.251,
+     "coverage": 1.0,
+     "residual_t1": 0.0,
+     "request_over_aum": 0.018899566382224696,
+     "by_origin": {
+      "USDtb": {
+       "request": 31.251,
+       "immediate": 31.251
+      }
+     }
+    }
+   },
+   "immediate_total": 34.941,
+   "immediate_share": 1.0,
+   "t1_total": 0.0,
+   "outside_total": 0
+  },
+  {
+   "shocks": {
+    "USDtb": 0.1
+   },
+   "scenario": "high",
+   "variant": "pro_rata",
+   "demand": {
+    "USDtb": 35.143
+   },
+   "total_demand": 35.143,
+   "own_liquidity_paid": {
+    "USDtb": 0.5710000000000001
+   },
+   "outside_map": {},
+   "funds": {
+    "BUIDL": {
+     "request": 34.572,
+     "liquidity_available": 100.0,
+     "liquidity_used": 34.572,
+     "coverage": 1.0,
+     "residual_t1": 0.0,
+     "request_over_aum": 0.020907996831022117,
+     "by_origin": {
+      "USDtb": {
+       "request": 34.572,
+       "immediate": 34.572
+      }
+     }
+    }
+   },
+   "immediate_total": 35.143,
+   "immediate_share": 1.0,
+   "t1_total": 0.0,
+   "outside_total": 0
+  },
+  {
+   "shocks": {
+    "USDtb": 0.1
+   },
+   "scenario": "high",
+   "variant": "liquid_first",
+   "demand": {
+    "USDtb": 35.143
+   },
+   "total_demand": 35.143,
+   "own_liquidity_paid": {
+    "USDtb": 5.71
+   },
+   "outside_map": {},
+   "funds": {
+    "BUIDL": {
+     "request": 29.433,
+     "liquidity_available": 100.0,
+     "liquidity_used": 29.433,
+     "coverage": 1.0,
+     "residual_t1": 0.0,
+     "request_over_aum": 0.0178001003912841,
+     "by_origin": {
+      "USDtb": {
+       "request": 29.433,
+       "immediate": 29.433
+      }
+     }
+    }
+   },
+   "immediate_total": 35.143,
+   "immediate_share": 1.0,
+   "t1_total": 0.0,
+   "outside_total": 0
+  },
+  {
+   "shocks": {
+    "USDtb": 0.3
+   },
+   "scenario": "low",
+   "variant": "pro_rata",
+   "demand": {
+    "USDtb": 103.71600000000001
+   },
+   "total_demand": 103.71600000000001,
+   "own_liquidity_paid": {
+    "USDtb": 0.0
+   },
+   "outside_map": {},
+   "funds": {
+    "BUIDL": {
+     "request": 103.71600000000001,
+     "liquidity_available": 25.0,
+     "liquidity_used": 25.0,
+     "coverage": 0.24104284777662074,
+     "residual_t1": 78.71600000000001,
+     "request_over_aum": 0.06272399049306636,
+     "by_origin": {
+      "USDtb": {
+       "request": 103.71600000000001,
+       "immediate": 25.0
+      }
+     }
+    }
+   },
+   "immediate_total": 25.0,
+   "immediate_share": 0.24104284777662074,
+   "t1_total": 78.71600000000001,
+   "outside_total": 0
+  },
+  {
+   "shocks": {
+    "USDtb": 0.3
+   },
+   "scenario": "low",
+   "variant": "liquid_first",
+   "demand": {
+    "USDtb": 103.71600000000001
+   },
+   "total_demand": 103.71600000000001,
+   "own_liquidity_paid": {
+    "USDtb": 0.0
+   },
+   "outside_map": {},
+   "funds": {
+    "BUIDL": {
+     "request": 103.71600000000001,
+     "liquidity_available": 25.0,
+     "liquidity_used": 25.0,
+     "coverage": 0.24104284777662074,
+     "residual_t1": 78.71600000000001,
+     "request_over_aum": 0.06272399049306636,
+     "by_origin": {
+      "USDtb": {
+       "request": 103.71600000000001,
+       "immediate": 25.0
+      }
+     }
+    }
+   },
+   "immediate_total": 25.0,
+   "immediate_share": 0.24104284777662074,
+   "t1_total": 78.71600000000001,
+   "outside_total": 0
+  },
+  {
+   "shocks": {
+    "USDtb": 0.3
+   },
+   "scenario": "base",
+   "variant": "pro_rata",
+   "demand": {
+    "USDtb": 104.82300000000001
+   },
+   "total_demand": 104.82300000000001,
+   "own_liquidity_paid": {
+    "USDtb": 1.107
+   },
+   "outside_map": {},
+   "funds": {
+    "BUIDL": {
+     "request": 103.71600000000001,
+     "liquidity_available": 75.0,
+     "liquidity_used": 75.0,
+     "coverage": 0.7231285433298622,
+     "residual_t1": 28.716000000000008,
+     "request_over_aum": 0.06272399049306636,
+     "by_origin": {
+      "USDtb": {
+       "request": 103.71600000000001,
+       "immediate": 75.0
+      }
+     }
+    }
+   },
+   "immediate_total": 76.107,
+   "immediate_share": 0.7260524884805815,
+   "t1_total": 28.716000000000008,
+   "outside_total": 0
+  },
+  {
+   "shocks": {
+    "USDtb": 0.3
+   },
+   "scenario": "base",
+   "variant": "liquid_first",
+   "demand": {
+    "USDtb": 104.82300000000001
+   },
+   "total_demand": 104.82300000000001,
+   "own_liquidity_paid": {
+    "USDtb": 3.69
+   },
+   "outside_map": {},
+   "funds": {
+    "BUIDL": {
+     "request": 101.13300000000001,
+     "liquidity_available": 75.0,
+     "liquidity_used": 75.0,
+     "coverage": 0.741597698080745,
+     "residual_t1": 26.13300000000001,
+     "request_over_aum": 0.061161877921779476,
+     "by_origin": {
+      "USDtb": {
+       "request": 101.13300000000001,
+       "immediate": 75.0
+      }
+     }
+    }
+   },
+   "immediate_total": 78.69,
+   "immediate_share": 0.7506940270742107,
+   "t1_total": 26.13300000000001,
+   "outside_total": 0
+  },
+  {
+   "shocks": {
+    "USDtb": 0.3
+   },
+   "scenario": "high",
+   "variant": "pro_rata",
+   "demand": {
+    "USDtb": 105.429
+   },
+   "total_demand": 105.429,
+   "own_liquidity_paid": {
+    "USDtb": 1.7129999999999999
+   },
+   "outside_map": {},
+   "funds": {
+    "BUIDL": {
+     "request": 103.71600000000001,
+     "liquidity_available": 100.0,
+     "liquidity_used": 100.0,
+     "coverage": 0.964171391106483,
+     "residual_t1": 3.716000000000008,
+     "request_over_aum": 0.06272399049306636,
+     "by_origin": {
+      "USDtb": {
+       "request": 103.71600000000001,
+       "immediate": 100.0
+      }
+     }
+    }
+   },
+   "immediate_total": 101.713,
+   "immediate_share": 0.9647535308122053,
+   "t1_total": 3.716000000000008,
+   "outside_total": 0
+  },
+  {
+   "shocks": {
+    "USDtb": 0.3
+   },
+   "scenario": "high",
+   "variant": "liquid_first",
+   "demand": {
+    "USDtb": 105.429
+   },
+   "total_demand": 105.429,
+   "own_liquidity_paid": {
+    "USDtb": 5.71
+   },
+   "outside_map": {},
+   "funds": {
+    "BUIDL": {
+     "request": 99.71900000000001,
+     "liquidity_available": 100.0,
+     "liquidity_used": 99.71900000000001,
+     "coverage": 1.0,
+     "residual_t1": 0.0,
+     "request_over_aum": 0.060306737706603455,
+     "by_origin": {
+      "USDtb": {
+       "request": 99.71900000000001,
+       "immediate": 99.71900000000001
+      }
+     }
+    }
+   },
+   "immediate_total": 105.429,
+   "immediate_share": 1.0,
+   "t1_total": 0.0,
+   "outside_total": 0
+  },
+  {
+   "shocks": {
+    "USDtb": 0.5
+   },
+   "scenario": "low",
+   "variant": "pro_rata",
+   "demand": {
+    "USDtb": 172.86
+   },
+   "total_demand": 172.86,
+   "own_liquidity_paid": {
+    "USDtb": 0.0
+   },
+   "outside_map": {},
+   "funds": {
+    "BUIDL": {
+     "request": 172.86,
+     "liquidity_available": 25.0,
+     "liquidity_used": 25.0,
+     "coverage": 0.14462570866597246,
+     "residual_t1": 147.86,
+     "request_over_aum": 0.1045399841551106,
+     "by_origin": {
+      "USDtb": {
+       "request": 172.86,
+       "immediate": 24.999999999999996
+      }
+     }
+    }
+   },
+   "immediate_total": 25.0,
+   "immediate_share": 0.14462570866597246,
+   "t1_total": 147.86,
+   "outside_total": 0
+  },
+  {
+   "shocks": {
+    "USDtb": 0.5
+   },
+   "scenario": "low",
+   "variant": "liquid_first",
+   "demand": {
+    "USDtb": 172.86
+   },
+   "total_demand": 172.86,
+   "own_liquidity_paid": {
+    "USDtb": 0.0
+   },
+   "outside_map": {},
+   "funds": {
+    "BUIDL": {
+     "request": 172.86,
+     "liquidity_available": 25.0,
+     "liquidity_used": 25.0,
+     "coverage": 0.14462570866597246,
+     "residual_t1": 147.86,
+     "request_over_aum": 0.1045399841551106,
+     "by_origin": {
+      "USDtb": {
+       "request": 172.86,
+       "immediate": 24.999999999999996
+      }
+     }
+    }
+   },
+   "immediate_total": 25.0,
+   "immediate_share": 0.14462570866597246,
+   "t1_total": 147.86,
+   "outside_total": 0
+  },
+  {
+   "shocks": {
+    "USDtb": 0.5
+   },
+   "scenario": "base",
+   "variant": "pro_rata",
+   "demand": {
+    "USDtb": 174.705
+   },
+   "total_demand": 174.705,
+   "own_liquidity_paid": {
+    "USDtb": 1.845
+   },
+   "outside_map": {},
+   "funds": {
+    "BUIDL": {
+     "request": 172.86,
+     "liquidity_available": 75.0,
+     "liquidity_used": 75.0,
+     "coverage": 0.43387712599791733,
+     "residual_t1": 97.86000000000001,
+     "request_over_aum": 0.1045399841551106,
+     "by_origin": {
+      "USDtb": {
+       "request": 172.86,
+       "immediate": 75.0
+      }
+     }
+    }
+   },
+   "immediate_total": 76.845,
+   "immediate_share": 0.43985575684725675,
+   "t1_total": 97.86000000000001,
+   "outside_total": 0
+  },
+  {
+   "shocks": {
+    "USDtb": 0.5
+   },
+   "scenario": "base",
+   "variant": "liquid_first",
+   "demand": {
+    "USDtb": 174.705
+   },
+   "total_demand": 174.705,
+   "own_liquidity_paid": {
+    "USDtb": 3.69
+   },
+   "outside_map": {},
+   "funds": {
+    "BUIDL": {
+     "request": 171.01500000000001,
+     "liquidity_available": 75.0,
+     "liquidity_used": 75.0,
+     "coverage": 0.4385580212262082,
+     "residual_t1": 96.01500000000001,
+     "request_over_aum": 0.10342418946133425,
+     "by_origin": {
+      "USDtb": {
+       "request": 171.01500000000001,
+       "immediate": 75.0
+      }
+     }
+    }
+   },
+   "immediate_total": 78.69,
+   "immediate_share": 0.45041641624452644,
+   "t1_total": 96.01500000000001,
+   "outside_total": 0
+  },
+  {
+   "shocks": {
+    "USDtb": 0.5
+   },
+   "scenario": "high",
+   "variant": "pro_rata",
+   "demand": {
+    "USDtb": 175.715
+   },
+   "total_demand": 175.715,
+   "own_liquidity_paid": {
+    "USDtb": 2.855
+   },
+   "outside_map": {},
+   "funds": {
+    "BUIDL": {
+     "request": 172.86,
+     "liquidity_available": 100.0,
+     "liquidity_used": 100.0,
+     "coverage": 0.5785028346638899,
+     "residual_t1": 72.86000000000001,
+     "request_over_aum": 0.1045399841551106,
+     "by_origin": {
+      "USDtb": {
+       "request": 172.86,
+       "immediate": 99.99999999999999
+      }
+     }
+    }
+   },
+   "immediate_total": 102.855,
+   "immediate_share": 0.5853512790598412,
+   "t1_total": 72.86000000000001,
+   "outside_total": 0
+  },
+  {
+   "shocks": {
+    "USDtb": 0.5
+   },
+   "scenario": "high",
+   "variant": "liquid_first",
+   "demand": {
+    "USDtb": 175.715
+   },
+   "total_demand": 175.715,
+   "own_liquidity_paid": {
+    "USDtb": 5.71
+   },
+   "outside_map": {},
+   "funds": {
+    "BUIDL": {
+     "request": 170.005,
+     "liquidity_available": 100.0,
+     "liquidity_used": 100.0,
+     "coverage": 0.5882179935884239,
+     "residual_t1": 70.005,
+     "request_over_aum": 0.1028133750219228,
+     "by_origin": {
+      "USDtb": {
+       "request": 170.005,
+       "immediate": 100.0
+      }
+     }
+    }
+   },
+   "immediate_total": 105.71,
+   "immediate_share": 0.6015991804911361,
+   "t1_total": 70.005,
+   "outside_total": 0
+  }
+ ]
+}
